@@ -46,15 +46,12 @@ study folder에서 `$ git init`을 수행
 $ git init
 ```
 
-![alt text](image-1.png)  
+![Fig 1. git의 버전 관리 확인](image-1.png)  
 
 [Fig 1.] 경로 옆에 <span style="color: #0EFCFE">(master)</span>가 생긴 것을 확인할 수 있음  
 
-![alt text](image-2.png)  
-[Fig 2.] 또한 <span style="color: #0EFCFE">.git</span> 폴더가 생긴 것을 확인할 수 있음  
-  
-     
-
+![Fig 2. .git 파일이 새로 생김](image-2.png)  
+[Fig 2.] 또한 <span style="color: #0EFCFE">.git</span> 폴더가 생긴 것을 확인할 수 있음      
 
 **git add** : working directory에서 staging area에 파일을 추가하는 코드  
 ```bash
@@ -85,6 +82,8 @@ $ git config --global user.name "김땡주"
 ```  
 각 PJT마다 로컬로 작성자를 설정할 수도 있다.
 
+**git config** : 작성자 설정
+
 ```bash
 # 아래 코드는 설정된 전역 값을 확인하기 위한 옵션
 $ git config --global --list
@@ -95,14 +94,15 @@ $ git config --global --list
 code ~/.gitconfig
 ```  
 
+**git log**: commit으로 저장한 파일을 확인할 수 있는 명령어
+
 ```bash
-# commit으로 저장한 파일을 확인할 수 있는 코드
 $ git log
 ```
 
+**git restore** : staging area에 추가하지 않을 파일을 추가했을 때, 삭제하는 명령어
+
 ```bash
-# 실수로 staging area에 추가하지 않을 파일을 추가했다면
-# 아래의 코드로 삭제할 수 있음
 $ git restore --staged filename
 ```
 
@@ -119,23 +119,30 @@ $ git restore --staged filename
 
 
 # GITHub 사용
-README.md를 추가할까 말까
+README.md를 추가할까 말까  
 -> README를 추가하면 .git 이후에 readme.md를 추가해서 최초 commit이 시행된 상태로 repository가 생성되고 저장된다는 특징이 있음  
 현재 작업 중인 폴더의 파일들을 업로드하기 위해서는 굳이 그렇게 할 필요 없음  
 
-**git remote add** : 원격저장소 위치를 알려준다.  
+**git remote add** : 원격저장소 위치를 알려주는 명령어  
 ```bash
 $ git remote add origin https:// # add 이후 원격저장소 주소 
 ```  
 여러 개의 원격저장소에 저장할 수 있다는 특징이 있음. 동일한 방식으로 원격저장소를 알려주면 된다.  
 
-**git remote -v** : 현재 연결된 원격저장소 위치를 알려준다.  
+**git remote -v** : 현재 연결된 원격저장소 위치를 알려주는 명령어  
 ```bash
 $ git remote -v  
 ```
 
-**git push** : 원격저장소(repository)에 저장  
+**git push** : 원격저장소(repository)에 저장하는 명령어  
 ```bash
 # -u 는 저장을 위한 흐름을 옮김
+# origin은 연결된 원격저장소를 의미함
+# master는 원격저장소의 version을 의미함
 $ git push -u origin master  
 ```  
+
+**git clone** : 다른 로컬에서도 동일한 원격 저장소의 파일들을 불러와 사용하기 위한 명령어
+```bash
+git clone https:// # clone 이후 주소
+```
