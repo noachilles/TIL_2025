@@ -53,12 +53,10 @@ $ rm -r X # r은 recursion - 폴더 삭제
 ---
 **절대 경로**   
 : Root 디렉토리부터 목적 지점까지 거치는 모든 경로를 전부 작성한 것  
-Ex) 'C:\Users\SSAFY\Desktop'  
-
-Window: 슬래시를 사용한다.
+> 예: 'C:\Users\SSAFY\Desktop'</span>  
+Window: 코드에서 경로를 사용할 때는 슬래시를 사용한다.  
 
 **상대 경로**  
 : 현재 작업하고 있는 디렉토리 기준으로 계산된 상대적 위치를 작성한 것  
-만약 현재 작업 디렉토리가 'C:/Users'일 때,
+> 만약 현재 작업 디렉토리가 'C:/Users'일 때,  
 윈도우 바탕 화면의 상대 경로는 'SSAFY/Desktop'  
-
