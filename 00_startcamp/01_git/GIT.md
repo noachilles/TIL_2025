@@ -91,7 +91,7 @@ $ git config --global --list
 
 ```bash
 # 사용자 계정의 숨겨진 gitconfig 파일을 VScode로 연다.
-code ~/.gitconfig
+$ code ~/.gitconfig
 ```  
 
 **git log**: commit으로 저장한 파일을 확인할 수 있는 명령어
