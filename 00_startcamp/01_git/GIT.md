@@ -32,7 +32,7 @@
 
 **staging area**: working directory에서 변경된 파일 중, 다음 버전에 포함시킬 파일들을 선택적으로 추가하거나 제외할 수 있는 중간 준비 영역  
 여기에 새로운 '파일들'이 등록된다. 각 파일을 취사 선택할 수 있음
-<span style="color: #a6daf4">각 기능별로 version을 다르게 선택하는 게 좋고, 이를 취사 선택하는 구역이 staging area</span>  
+<span style="background: #a6daf4; color: black">각 기능별로 version을 다르게 선택하는 게 좋고, 이를 취사 선택하는 구역이 staging area </span>  
 
 **repository** : 버전 이력과 파일들이 영구적으로 저장되는 영역으로, 모든 버전, 변경 이력이 기록됨  
 repository에 올라간 파일은 staging area에서 삭제된다.  
@@ -47,10 +47,10 @@ $ git init
 
 ![Fig 2. git의 버전 관리 확인](image-1.png)  
 
-<span style="color: #848482">[Fig 1.] 경로 옆에 <span style="color: #0EFCFE">(master)</span>가 생긴 것을 확인할 수 있음</span>  
+<span style="color: #848482">[Fig 2.] 경로 옆에 <span style="color: #0EFCFE">(master)</span>가 생긴 것을 확인할 수 있음</span>  
 
 ![Fig 3. .git 파일이 새로 생김](image-2.png)  
-<span style="color: #848482">[Fig 2.] 또한 <span style="color: #0EFCFE">.git</span> 폴더가 생긴 것을 확인할 수 있음</span>      
+<span style="color: #848482">[Fig 3.] 또한 <span style="color: #0EFCFE">.git</span> 폴더가 생긴 것을 확인할 수 있음</span>      
 
 #### git add : working directory에서 staging area에 파일을 추가하는 코드  
 ```bash
@@ -58,7 +58,7 @@ $ git add 00_startcamp/01_git/markdown.md # add 이후 파일명
 $ git add . # 현재 작업중인 디렉토리의 모든 내용을 추가할 수 있음
 ```
 ![Fig 4. ](image-3.png)  
-<span style="color: #848482">[Fig 3.] working directory에서 staging area에 파일을 추가하는 코드</span>  
+<span style="color: #848482">[Fig 4.] working directory에서 staging area에 파일을 추가하는 코드</span>  
 
 #### git restore : staging area에 추가하지 않을 파일을 추가했을 때, 삭제하는 명령어
 
@@ -67,17 +67,23 @@ $ git restore --staged [filename]
 ```  
 
 #### git status : 현재 working directory 및 staging area 현황을 보여줌  
-![alt text](image-4.png)  
-<span style="color: #848482">[Fig 4.] 이전에 version 관리도 한 적이 없고 repository에 아무것도 없는 이 상황에서 git은 아무것도 추적하고 있지 않음</span>  
+![Fig 5.](image-4.png)  
+<span style="color: #848482">[Fig 5.] 이전에 version 관리도 한 적이 없고 repository에 아무것도 없는 이 상황에서 git은 아무것도 추적하고 있지 않음</span>  
 
-![alt text](image-5.png)  
-<span style="color: #848482">[Fig 5.] commit을 하기 위해서는 markdown.md 파일의 변화를 기록하는 것이 필요하다는 내용의 에러</span>  
+![Fig 6.](image-5.png)  
+<span style="color: #848482">[Fig 6.] commit을 하기 위해서는 markdown.md 파일의 변화를 기록하는 것이 필요하다는 내용의 에러</span>  
 다른 파일의 변동 사항에 대해서는 관심 없고, **이미 add된(staging area에 등록된) 파일만** git이 추적하고, 알람을 제공  
 
 #### git commit : staging area에 올라온 변경된 파일을 저장하는 행위  
 
-![Fig 5.](image-6.png)  
-<span style="color: #848482">[Fig 5.] 제대로 안 됩니다! 왜냐면 누가, 언제 했는지 기록해야 버전 관리를 할 수 있기 때문에</span>  
+![Fig 7.](image-6.png)  
+<span style="color: #848482">[Fig 7.] 제대로 안 됩니다! 왜냐면 누가, 언제 했는지 기록해야 버전 관리를 할 수 있기 때문에</span>  
+
+commit의 필수 요건인 -m "commit message"를 추가하지 않으면  
+vim으로 연결된다 -> ':q'를 입력해서 나가면 됨  
+
+![Fig 8.](image-8.png)
+<span style="color: #848482">[Fig 8.] 이 화면이 vim. 여기를 빠져나가려면 <span style="color: #0EFCFE">:q</span> 를 입력하자</span>  
 
 
 ```bash
@@ -105,8 +111,8 @@ $ code ~/.gitconfig
 $ git log
 ```
 
-![Fig 7.](image-7.png)  
-<span style="color: #848482">[Fig 7.] commit(저장)한 log를 확인할 수 있다.</span>
+![Fig 8.](image-7.png)  
+<span style="color: #848482">[Fig 8.] commit(저장)한 log를 확인할 수 있다.</span>
 
 
 ### Remote Repository  
@@ -115,7 +121,7 @@ $ git log
 
 특히 우리는 GitLab을 사용할 것. 개인적인 repository  
 해당 GitLab 내에서는 개인의 Repository를 서로 볼 수 없음.  
-> 따라서, 프로젝트 총괄을 위해 강사님을 초대해드려야 함  
+<span style="background: #a6daf4; color: black">따라서, 프로젝트 총괄을 위해 강사님을 초대해드려야 함</span>  
 
 
 # GITHub 사용
@@ -128,7 +134,7 @@ README를 추가하면, .git 파일 생성 이후에 README.md를 추가해 최�
 # origin 은 추가하는 원격 저장소 별칭
 # 이후 원격 저장소 주소
 
-$ git remote add origin https:// 
+$ git remote add origin [원격저장소 url]
 ```  
 
 #### git remote -v : 현재 연결된 원격저장소 위치를 알려주는 명령어  
@@ -147,5 +153,5 @@ $ git push -u origin master
 
 #### git clone : 로컬에서 원격 저장소의 파일들을 불러와 사용하기 위한 명령어 - 처음 복제할 때만 사용
 ```bash
-git clone https:// # clone 이후 주소
+git clone [원격저장소 url]
 ```  

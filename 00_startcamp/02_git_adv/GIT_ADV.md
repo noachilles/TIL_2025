@@ -1,9 +1,4 @@
-# GIT
-한 개의 site에서 받아온 인증서: 당연하게도 하나의 site에서만 동작해야 한다.  
-
-project ssafy에서는 gitlab도 같이 처리할 수 있도록 동일한 인증서 갖고 있음  
-PJT ssafy 에서 sign out 한다고 해서 gitlab 에서 sign out 되는 것은 아님  
-따라서 따로 sign out 해줘야 한다.  
+# GIT Advanced
 
 #### git pull : 원격저장소에서 수정된 내용을 로컬로 불러오기 위한 명령어  
 ```bash
@@ -11,22 +6,136 @@ git pull
 ```  
 
 따라서 매일의 루틴)  
-pull - (add / commit) * n  - push  
+* pull - (add / commit) * n  - push  
+* add 전에 status를 생활화 하자
 
-commit을 하는 과정을 중점적으로 생각하자.  
-commit이 중요한 이유?!  
-commit 메세지를 제대로 적으면 - 기능 구현에서 어느 것이 안 되는지, 잘 되는지 확인하고 code refactoring / 예기치 못한 bug에 대응할 수 있음  
+### 몇 가지 질문에 대한 대답
 
-프로젝트를 다른 디렉토리로 옮길 때, commit 메세지를 그대로 가져갈 수 있을까? - 없음  
-어제 잠깐 git log를 찍어봤을 때 나오는 값과, commit 이후 나오는 난수는 commit의 버전정보  
-버전정보를 그대로 옮겨갈 것 같았으면, 디렉토리를 따로 관리해서는 안 됐다.  
+> ❓ commit이 중요한 이유  
+❗ commit 메세지를 제대로 적으면 - 기능 구현에서 어느 것이 안 되는지, 잘 되는지 확인하고 code refactoring / 예기치 못한 bug에 대응할 수 있다.  
 
-명심: 과제 하나 당 PJT 하나  
+> ❓ 프로젝트를 다른 디렉토리로 옮길 때, commit 메세지를 그대로 가져갈 수 있을까?  
+❗ 없음 / git log를 찍어봤을 때 나오는 값과, commit 이후 나오는 난수는 commit의 버전정보 버전 정보를 그대로 옮겨가고 싶다면, 별도의 디렉토리가 아닌 하나의 디렉토리에서 관리해야 함  
 
-바깥 directory를 git으로 관리하며 하위 폴더를 git으로 관리할 수 있음: sub module  
-단, 이렇게 사용하려면 두 개를 별개의 원격저장소로 관리해야 함  
-add를 하면, 큰일날 걸 알려준다..^^ 항상 사용 전에 사용방법을 숙지하고 진행해야 한다.  
-만약 제대로 사용하지 못했다면, 상위 디렉토리 기준으로 하위 디렉토리를 없앤다
-=> local에는 그대로 남아있음  
+
+> ❓ 꼭 과제 하나 당 하나의 디렉토리를 사용해아 하나?  
+❗ 바깥 directory를 git으로 관리해 하위 폴더를 git으로 관리할 수 있음 : sub module   
+단, 사용법을 숙지하고 진행해야 함  
+➕ 만약 제대로 사용하지 못했다면, 상위 디렉토리 기준으로 하위 디렉토리를 없앤다  
+=> local에는 그대로 남아있으므로  
 -> add(하위 디렉토리 없어진 것이 저장됨)  
 -> 하위 디렉토리의 .git 없애기  
+
+> ❓push가 안 되는 이유  
+❗원격 저장소와 로컬이 가진 commit 기록이 서로 다르기 때문에  
+<span style="color: #0EFCFE">pull</span>은 원격 -> 로컬 / <span style="color: #0EFCFE">push</span>는 로컬 -> 원격</span>  
+pull을 받으면 문제가 해결된다.  
+
+push에 문제가 생겼을 때 가장 최신 버전이 있는 공간은 원격 저장소  
+=> pull 받으면 문제를 해결할 수 있음  
+
+# Branch  
+: 나뭇가지처럼 여러 갈래로 작업 공간을 나누어 독립적으로 작업할 수 있도록 도와주는 Git 도구  
+
+하나의 원격 저장소에서 여러 명이 작업할 수 있도록 Branch를 활용할 수 있음  
+
+#### Branch의 장점  
+1. 독립된 개발 환경을 형성해 원본에 대한 안전한 관리  
+2. 하나의 작업은 하나의 브랜치로 나누어 체계적인 협업과 개발 가능  
+3. 손쉽게 브랜치를 생성하고 브랜치 사이를 이동할 수 있음  
+  
+#### 상황 설정
+1. 팀원 A는 로그인
+2. 팀원 B는 게시글 작성  
+3. 팀원 A, B는 모두 settings.py의 내용을 필요로 함  
+
+#### git branch: 생성된 branch를 관리하는 명령어  
+
+기능 1. branch 생성  
+```bash
+# -c 는 create
+# 이름/작업은 주로 '/'로 구분
+$ git branch -c viktor/login
+```
+
+기능 2. 현재 있는 branch 확인  
+```bash
+$ git branch
+```  
+
+기능 3. branch 삭제  
+```bash
+# -d 는 delete
+$ git branch -d viktor/login
+```
+
+#### git switch: branch를 변경하는 명령어  
+
+```bash
+$ git switch viktor/login
+```  
+
+branch에 따라 local의 작업 공간도 변화하는 것을 확인할 수 있다.  
+  
+
+#### git merge: branch의 작업물을 병합하는 명령어  
+```bash  
+$ git merge [branch 이름]  
+```
+
+현재 진행한 merge는 fast-forward merge  
+
+harry/articler의 branch를 merge할 때는 왜 vim이 떴을까?  
+
+git log를 다시 살펴보자  
+-- 나는 다르게 나와서, 다시 해봐야 할 것 같음  
+
+원래는 master가 초기 설정을 하고, viktor 것을 merge 했을 때, 앞으로 한 칸 땡겨지기만 하면 돼서 => Fast Forward  
+
+harry 입장에서는 master의 초기 상태에서 article 작업을 완료함  
+
+login 작업하고 article 작업한 것까지 새로운 version을 하나 만들어 commit을 하기 때문에 => Three way merge  
+
+두 가지 종류: Fast Forward / Three Way Merge  
+
+-- 계속 잘 안 돼서, 확인을 다시 해봐야겠다.  
+
+![alt text](image.png)
+
+![alt text](image-1.png)
+
+![alt text](image-2.png)  
+
+각 로컬에서 branch를 생성하고 switch로 개별 작업공간에서 작업을 이룸  
+
+이후에 add / commit 하고  
+새로 생성한 브랜치로 올리면 각 로컬의 branch commit이 원격저장소에 저장됨    
+
+![alt text](image-3.png)  
+
+branch merge 요청을 보내기 위한 작업  
+
+사용이 끝난 branch는 삭제한다!  
+단, 원격저장소에서만 merge된 경우, 로컬에서도 pull을 통해 병합해야 함  
+
+-- 다시 실습해볼 것
+> ❓ 서로 다른 두 개의 branch에서 동일한 파일의 동일한 줄을 수정하면 어떻게 될까?  
+ ❗2개를 어떻게 받아들일지 master branch에서 설정할 수 있음  
+ current / incoming / both 중 선택할 수 있음  
+current는 마지막 merge 이전의 최종 ver을 받아들임  
+incoming은 최종 merge한 branch의 코드를 받아옴  
+both는 둘 다 받아들임 -> 여기서 수정할 수도 있음  
+
+
+ master의 작업물 역시 viktor가 가져올 수 있음  
+
+
+![alt text](image-4.png)
+
+conflict 발생한 상황  
+해결 방법)
+viktor가 자신의 local 저장소 상에서 master를 merge 받아서 수정  
+conflict를 해결하고 다시 git status - add - commit - push 진행(자신의 브랜치로 push)  
+
+원격저장소에서 모두 merge 하고나면, 그 다음에 local의 master에서 pull  
+master branch에는 최종 완성본만 저장됨  
