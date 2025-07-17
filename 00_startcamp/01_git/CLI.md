@@ -14,7 +14,7 @@ CLI에서 '.'의 역할
 ```bash
 $ touch some_file.txt
 ```  
-> 공백을 쓰지 않는 이유 : if `touch some file.txt` 를 사용하면 some / file 2개의 파일이 생성되기 때문이다.  
+> CLI에서 공백을 쓰지 않는 이유 : if `touch some file.txt` 를 사용하면 some / file 2개의 파일이 생성되기 때문이다.  
 
 **mkdir X** : 새 디렉토리 생성 
 ```bash
@@ -42,7 +42,7 @@ $ start . # 현재 폴더를 열어줌
 ```
 
 **rm** : 파일 삭제 & 디렉토리 파일은 -r 옵션 추가 사용  
-**복구 못함! 진짜 지워도 되는지 두 번 생각하고 사용합시다**  
+**<span style = "color: #d0312d">복구 못함! 진짜 지워도 되는지 두 번 생각하고 사용합시다</span>**  
   공백으로 여러 개 삭제 가능
 ```bash
 $ rm some_fime.txt # 파일 삭제 예시
