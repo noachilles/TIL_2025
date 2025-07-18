@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>자리 정하기</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="title-box">
+      <h1>자리 정하기</h1>
+    </div>
+    <div class="input-area">
+      <input id="row" type="number" min="1" placeholder="행(row)">
+      <input id="col" type="number" min="1" placeholder="열(col)">
+      <label class="file-label">
+        <span id="file-label-text">학생 명단 선택</span>
+        <input id="file" type="file" accept=".txt" style="display:none;">
+      </label>
+    </div>
+    <div class="button-area">
+      <button id="arrange-btn" onclick="startArrangement()" disabled>자리 배치</button>
+    </div>
+    <div id="countdown"></div>
+    <div id="seat-area"></div>
+    <div id="overlay">
+      <canvas id="bubble-canvas"></canvas>
+      <span id="overlay-count"></span>
+    </div>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>
