@@ -106,7 +106,8 @@ $ git merge [branch 이름]
 이후에 add / commit 하고  
 새로 생성한 브랜치로 올리면 각 로컬의 branch commit이 원격저장소에 저장됨    
 
-![alt text](image-3.png)  
+![Fig 3.](image-3.png)  
+[Fig 3.] Merge requests를 보냄   
 
 branch merge 요청을 보내기 위한 작업  
 
@@ -118,9 +119,9 @@ branch merge 요청을 보내기 위한 작업
  ❗2개를 어떻게 받아들일지 master branch에서 설정할 수 있음  
 
 **current / incoming / both** 중 선택할 수 있음  
-#### current는 마지막 merge 이전의 최종 ver을 받아들임  
-#### incoming은 최종 merge한 branch의 코드를 받아옴  
-#### both는 둘 다 받아들임 -> 여기서 수정할 수도 있음  
+> #### current는 마지막 merge 이전의 최종 ver을 받아들임  
+> #### incoming은 최종 merge한 branch의 코드를 받아옴  
+> #### both는 둘 다 받아들임 -> 여기서 수정할 수도 있음  
 
 
  master의 작업물 역시 viktor가 가져올 수 있음  
@@ -133,12 +134,12 @@ conflict 발생한 상황
 viktor가 자신의 local 저장소 상에서 master를 merge 받아서 수정  
 conflict를 해결하고 다시 git status - add - commit - push 진행(자신의 브랜치로 push)  
 
+![alt text](image-5.png)
+
 원격저장소에서 모두 merge 하고나면, 그 다음에 local의 master에서 pull  
 master branch에는 최종 완성본만 저장됨  
 
 > 제일 중요한 것: git 명령어를 작성하고 출력된 결과를 천천히 읽어보기  
-
-![alt text](image-5.png)
 
 ![alt text](image-6.png)
 
