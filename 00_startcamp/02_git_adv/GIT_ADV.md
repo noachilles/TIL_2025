@@ -32,7 +32,7 @@ pull을 받으면 문제가 해결된다.
 ➕ push에 문제가 생겼을 때 가장 최신 버전이 있는 공간은 원격 저장소이기 때문에 문제가 발생함  
 => pull 받으면 문제를 해결할 수 있음  
 
-# Branch  
+## Branch  
 #### : 나뭇가지처럼 여러 갈래로 작업 공간을 나누어 독립적으로 작업할 수 있도록 도와주는 Git 도구  
 
 하나의 원격 저장소에서 여러 명이 작업할 수 있도록 Branch를 활용할 수 있음  
@@ -77,22 +77,22 @@ branch에 따라 local의 작업 공간도 변화하는 것을 확인할 수 있
   
 ## MERGE
 
-### MERGE 이해하기
-
 #### git merge: branch의 작업물을 병합하는 명령어  
+
 ```bash  
 $ git merge [branch 이름]  
 ```
 두 가지 종류: Fast Forward / Three Way Merge  
 
-왜 어떤 merge를 진행할 때는 vim을 열게 되는 걸까?  
-master 브랜치에서 초기 설정  
-viktor가 수행한 작업을 merge 했을 때:  
-master의 최종 상태에서 앞으로 나아가면 되기 때문에 Fast Forward merge를 수행함  
-& 현재 가장 최신 상태는 merge viktor 이후  
+### 두 종류의 MERGE
+❓ 왜 어떤 merge를 진행할 때는 vim을 열게 되는 걸까?  
+1. master 브랜치에서 초기 설정  
+2. viktor가 수행한 작업을 merge 했을 때:  
+  master의 최종 상태로부터 viktor 작업물을 추가하면 되기 때문에 **Fast-Forward merge**를 수행함  
+  ➕ 현재 가장 최신 상태는 merge viktor 이후  
 
-harry 입장에서는 master의 초기 상태 폴더를 불러와 article 작업을 완료함  
-현재 최신 상태 + article 작업을 합쳐 하나의 commit을 수행하며, 이를 Three way merge라 칭함
+3. harry 입장에서는 **master의 초기 상태**를 불러와 article 작업을 완료함  
+  현재 최신 상태 + article 작업을 합쳐 하나의 commit을 수행하며, 이를 **Three way merge**라 칭함
 
 ## GIT Lab 사용하기
 ![Fig 1.](image.png)  
@@ -113,14 +113,14 @@ branch merge 요청을 보내기 위한 작업
 사용이 끝난 branch는 삭제한다!  
 단, 원격저장소에서만 merge된 경우, 로컬에서도 pull을 통해 병합해야 로컬에도 반영 / 사용 끝난 branch를 삭제할 수 있음    
 
--- 다시 실습해볼 것
+
 > ❓ 서로 다른 두 개의 branch에서 동일한 파일의 동일한 줄을 수정하면 어떻게 될까?  
  ❗2개를 어떻게 받아들일지 master branch에서 설정할 수 있음  
 
- current / incoming / both 중 선택할 수 있음  
-current는 마지막 merge 이전의 최종 ver을 받아들임  
-incoming은 최종 merge한 branch의 코드를 받아옴  
-both는 둘 다 받아들임 -> 여기서 수정할 수도 있음  
+**current / incoming / both** 중 선택할 수 있음  
+#### current는 마지막 merge 이전의 최종 ver을 받아들임  
+#### incoming은 최종 merge한 branch의 코드를 받아옴  
+#### both는 둘 다 받아들임 -> 여기서 수정할 수도 있음  
 
 
  master의 작업물 역시 viktor가 가져올 수 있음  
@@ -136,6 +136,10 @@ conflict를 해결하고 다시 git status - add - commit - push 진행(자신�
 원격저장소에서 모두 merge 하고나면, 그 다음에 local의 master에서 pull  
 master branch에는 최종 완성본만 저장됨  
 
-> 제일 중요한 것: git 명령어를 작성하고 출력된 결과를 천천히 읽어보기 
+> 제일 중요한 것: git 명령어를 작성하고 출력된 결과를 천천히 읽어보기  
 
-이어서...
+![alt text](image-5.png)
+
+![alt text](image-6.png)
+
+끝
