@@ -11,22 +11,22 @@ add 전 status를 생활화 하자
 
 ## 몇 가지 질문에 대한 대답
 
-> ❓ commit이 중요한 이유  
-❗ commit 메세지를 제대로 적으면, 기능 구현에서 어느 것이 안 되는지, 잘 되는지 확인하고 code refactoring / 예기치 못한 bug에 대응할 수 있다.  
+#### ❓ commit이 중요한 이유  
+> ❗ commit 메세지를 제대로 적으면, 기능 구현에서 어느 것이 안 되는지, 잘 되는지 확인하고 code refactoring / 예기치 못한 bug에 대응할 수 있다.  
 
-> ❓ 프로젝트를 다른 디렉토리로 옮길 때, commit 메세지를 그대로 가져갈 수 있을까?  
-❗ 없음 / git log를 찍어봤을 때 나오는 값과, commit 이후 나오는 난수는 commit의 버전정보 버전 정보를 그대로 옮겨가고 싶다면, 별도의 디렉토리가 아닌 하나의 디렉토리에서 관리해야 함  
+#### ❓ 프로젝트를 다른 디렉토리로 옮길 때, commit 메세지를 그대로 가져갈 수 있을까?  
+> ❗ 없음 / git log를 찍어봤을 때 나오는 값과, commit 이후 나오는 난수는 commit의 버전정보 버전 정보를 그대로 옮겨가고 싶다면, 별도의 디렉토리가 아닌 하나의 디렉토리에서 관리해야 함  
 
 
-> ❓ 꼭 과제 하나 당 하나의 디렉토리를 사용해아 하나?  
-❗ 바깥 directory를 git으로 관리해 하위 폴더를 git으로 관리할 수 있음 : sub module   
+#### ❓ 꼭 과제 하나 당 하나의 디렉토리를 사용해아 하나?  
+> ❗ 바깥 directory를 git으로 관리해 하위 폴더를 git으로 관리할 수 있음 : sub module   
 단, 사용법을 숙지하고 진행해야 함  
 ➕ 만약 제대로 사용하지 못했다면, 상위 디렉토리 기준으로 하위 디렉토리를 없앤다 = 하위 디렉토리의 위치를 옮긴다.    
 -> 상위 디렉토리에서 add(하위 디렉토리 없어진 것이 저장됨)  
 -> 하위 디렉토리의 .git 없애고 필요할 경우 다시 기록  
 
-> ❓push가 안 되는 이유  
-❗원격 저장소와 로컬이 가진 commit 기록이 서로 다르기 때문에 발생한다.   
+#### ❓push가 안 되는 이유  
+> ❗원격 저장소와 로컬이 가진 commit 기록이 서로 다르기 때문에 발생한다.   
 <span style="color: #0EFCFE">pull</span>은 원격 -> 로컬 / <span style="color: #0EFCFE">push</span>는 로컬 -> 원격</span>  
 pull을 받으면 문제가 해결된다.  
 ➕ push에 문제가 생겼을 때 가장 최신 버전이 있는 공간은 원격 저장소이기 때문에 문제가 발생함  
@@ -85,7 +85,7 @@ $ git merge [branch 이름]
 두 가지 종류: Fast Forward / Three Way Merge  
 
 ### 두 종류의 MERGE
-❓ 왜 어떤 merge를 진행할 때는 vim을 열게 되는 걸까?  
+#### ❓ 왜 어떤 merge를 진행할 때는 vim을 열게 되는 걸까?  
 1. master 브랜치에서 초기 설정  
 2. viktor가 수행한 작업을 merge 했을 때:  
   master의 최종 상태로부터 viktor 작업물을 추가하면 되기 때문에 **Fast-Forward merge**를 수행함  
@@ -115,32 +115,41 @@ branch merge 요청을 보내기 위한 작업
 단, 원격저장소에서만 merge된 경우, 로컬에서도 pull을 통해 병합해야 로컬에도 반영 / 사용 끝난 branch를 삭제할 수 있음    
 
 
-> ❓ 서로 다른 두 개의 branch에서 동일한 파일의 동일한 줄을 수정하면 어떻게 될까?  
- ❗2개를 어떻게 받아들일지 master branch에서 설정할 수 있음  
+#### ❓ 서로 다른 두 개의 branch에서 동일한 파일의 동일한 줄을 수정하면 어떻게 될까?  
+> ❗conflict가 발생한다.    
+
+#### conflict 발생한 상황 묘사)  
+- harrry와 viktor가 모두 원격 저장소의 develop branch를 pull 해서 동일한 파일인 `settings.py` 파일에서 작업했다.  
+- viktor가 먼저 작업을 끝내 원격저장소의 viktor branch에 push  
+- harry가 나중에 작업을 끝내고 원격저장소의 harry branch에 push  
+- 팀장은 viktor branch를 먼저 merge 했다.  
+
+=> 위의 경우, harry의 작업물을 합치는 과정에서 conflict가 발생한다.  
+
+![conflict 발생](image-4.png)
+
+#### conflict 해결 프로세스)  
+1. harry가 자신의 local 저장소/개인 브랜치에서  
+2. develop 브랜치를 merge 받아서 수정  
+3. conflict를 해결하고 다시 git status - add - commit - push 진행(자신의 브랜치로 push)  
+
+
+![alt text](image-5.png)  
 
 **current / incoming / both** 중 선택할 수 있음  
 > #### current는 마지막 merge 이전의 최종 ver을 받아들임  
 > #### incoming은 최종 merge한 branch의 코드를 받아옴  
 > #### both는 둘 다 받아들임 -> 여기서 수정할 수도 있음  
 
+![alt text](image-6.png)  
+위처럼 conflict가 발생했을 때는 브랜치 이름 옆에 MERGING이 표시된다.  
+commit으로 conflict가 해결되면 사라지므로 브랜치 이름을 꼭 확인하자.  
 
- master의 작업물 역시 viktor가 가져올 수 있음  
 
-
-![alt text](image-4.png)
-
-conflict 발생한 상황  
-해결 방법)  
-viktor가 자신의 local 저장소 상에서 master를 merge 받아서 수정  
-conflict를 해결하고 다시 git status - add - commit - push 진행(자신의 브랜치로 push)  
-
-![alt text](image-5.png)
-
-원격저장소에서 모두 merge 하고나면, 그 다음에 local의 master에서 pull  
+원격저장소에서 모두 정상적으로 merge 하고나면, 그 다음에 local의 브랜치에서 pull    
 master branch에는 최종 완성본만 저장됨  
 
 > 제일 중요한 것: git 명령어를 작성하고 출력된 결과를 천천히 읽어보기  
 
-![alt text](image-6.png)
 
 끝
