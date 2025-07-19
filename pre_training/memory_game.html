@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>SSAFY 기억력 게임</title>
+    <style>
+        body {
+            font-family: 'Malgun Gothic', Arial, sans-serif;
+            background: #f0f4f8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 120px);
+            grid-template-rows: repeat(3, 120px);
+            gap: 15px;
+        }
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+            user-select: none;
+            text-align: center;
+            padding: 10px;
+        }
+        .card.center {
+            background: #2d7ff9;
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: default;
+        }
+        .card.flipped {
+            background: #2d7ff9;
+            color: #fff;
+        }
+        .card.matched {
+            background: #b2e672;
+            color: #333;
+            cursor: default;
+        }
+    </style>
+</head>
+<body>
+    <h1>기억력 게임</h1>
+    <div id="timer" style="position: absolute; top: 30px; left: 50%; transform: translateX(-50%); font-size: 1.5rem; font-weight: bold; color: #2d7ff9; background: #fff; padding: 8px 24px; border-radius: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); z-index: 10;">20</div>
+    <div id="result-time" style="display:none; position:fixed; left:50%; top:50%; transform:translate(-50%,-50%); font-size:2.2rem; font-weight:bold; color:#2d7ff9; background:#fff; padding:30px 50px; border-radius:30px; box-shadow:0 2px 16px rgba(0,0,0,0.12); z-index:200;"></div>
+    <div class="grid" id="gameGrid"></div>
+    <canvas id="fireworks" style="position:fixed; left:0; top:0; width:100vw; height:100vh; pointer-events:none; z-index:100; display:none;"></canvas>
+    <script>
+        // 목표 카드 목록 (각각 2장씩)
+        const goals = [
+            '목표 기업 설정하기',
+            '목표 기업 설정하기',
+            '서류/면접 컨설팅',
+            '서류/면접 컨설팅',
+            '포트폴리오 수정',
+            '포트폴리오 수정',
+            '데이터 기반 프로젝트 경험',
+            '데이터 기반 프로젝트 경험'
+        ];
+
+        // 카드 섞기 (Fisher-Yates)
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        // 3x3 카드 배열 만들기 (가운데는 고정)
+        function createCards() {
+            shuffle(goals);
+            const cards = [];
+            let goalIdx = 0;
+            for (let i = 0; i < 9; i++) {
+                if (i === 4) {
+                    cards.push({ text: '14기 파이팅', center: true, flipped: true, matched: true });
+                } else {
+                    cards.push({ text: goals[goalIdx++], center: false, flipped: false, matched: false });
+                }
+            }
+            return cards;
+        }
+
+        let cards = createCards();
+        let firstCard = null;
+        let secondCard = null;
+        let lock = false;
+        let timer = 20;
+        let timerInterval = null;
+        let gameEnded = false;
+        let startTime = null;
+
+        function render() {
+            const grid = document.getElementById('gameGrid');
+            grid.innerHTML = '';
+            cards.forEach((card, idx) => {
+                const div = document.createElement('div');
+                div.className = 'card' + (card.center ? ' center' : '') + (card.flipped ? ' flipped' : '') + (card.matched ? ' matched' : '');
+                div.textContent = card.flipped || card.center || card.matched ? card.text : '';
+                if (!card.center && !card.flipped && !card.matched && !gameEnded) {
+                    div.addEventListener('click', () => onCardClick(idx));
+                }
+                grid.appendChild(div);
+            });
+        }
+
+        function onCardClick(idx) {
+            if (lock || cards[idx].flipped || cards[idx].matched || gameEnded) return;
+            cards[idx].flipped = true;
+            if (!firstCard) {
+                firstCard = idx;
+            } else {
+                secondCard = idx;
+                lock = true;
+                setTimeout(checkMatch, 700);
+            }
+            render();
+        }
+
+        function checkMatch() {
+            if (cards[firstCard].text === cards[secondCard].text) {
+                cards[firstCard].matched = true;
+                cards[secondCard].matched = true;
+            } else {
+                cards[firstCard].flipped = false;
+                cards[secondCard].flipped = false;
+            }
+            firstCard = null;
+            secondCard = null;
+            lock = false;
+            render();
+            // Check for win
+            if (cards.filter(card => !card.center && card.matched).length === 8) {
+                endGame(true);
+            }
+        }
+
+        // Timer
+        function startTimer() {
+            document.getElementById('timer').textContent = timer;
+            startTime = Date.now();
+            timerInterval = setInterval(() => {
+                timer--;
+                document.getElementById('timer').textContent = timer;
+                if (timer <= 0) {
+                    endGame(false);
+                }
+            }, 1000);
+        }
+
+        function endGame(isWin) {
+            gameEnded = true;
+            clearInterval(timerInterval);
+            if (isWin) {
+                showFireworks();
+                document.getElementById('timer').textContent = '축하합니다!';
+                // 시간 표시
+                const endTime = Date.now();
+                const elapsed = Math.round((endTime - startTime) / 1000);
+                const resultDiv = document.getElementById('result-time');
+                resultDiv.textContent = `클리어 시간: ${elapsed}초`;
+                resultDiv.style.display = 'block';
+            } else {
+                document.getElementById('timer').textContent = '시간 종료!';
+            }
+        }
+
+        // Fireworks effect (simple canvas fireworks)
+        function showFireworks() {
+            const canvas = document.getElementById('fireworks');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            canvas.style.display = 'block';
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            function randomColor() {
+                const colors = ['#ff5252','#ffd600','#40c4ff','#69f0ae','#ff4081','#fff176','#b388ff','#ffab91'];
+                return colors[Math.floor(Math.random()*colors.length)];
+            }
+            function createFirework(x, y) {
+                for (let i = 0; i < 40; i++) {
+                    const angle = (Math.PI * 2) * (i / 40);
+                    const speed = Math.random() * 4 + 2;
+                    particles.push({
+                        x, y,
+                        vx: Math.cos(angle) * speed,
+                        vy: Math.sin(angle) * speed,
+                        alpha: 1,
+                        color: randomColor()
+                    });
+                }
+            }
+            // Launch 3 fireworks at random positions
+            for (let i = 0; i < 3; i++) {
+                setTimeout(() => {
+                    createFirework(
+                        Math.random() * canvas.width * 0.6 + canvas.width * 0.2,
+                        Math.random() * canvas.height * 0.4 + canvas.height * 0.2
+                    );
+                }, i * 400);
+            }
+            let frame = 0;
+            function animate() {
+                ctx.clearRect(0,0,canvas.width,canvas.height);
+                particles.forEach(p => {
+                    ctx.globalAlpha = p.alpha;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, 4, 0, Math.PI*2);
+                    ctx.fillStyle = p.color;
+                    ctx.fill();
+                });
+                particles.forEach(p => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    p.vy += 0.05;
+                    p.alpha -= 0.012;
+                });
+                particles = particles.filter(p => p.alpha > 0);
+                frame++;
+                if (frame < 120) {
+                    requestAnimationFrame(animate);
+                } else {
+                    canvas.style.display = 'none';
+                }
+            }
+            animate();
+        }
+
+        render();
+        startTimer();
+    </script>
+</body>
+</html>

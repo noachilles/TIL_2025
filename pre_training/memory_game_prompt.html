@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>🎉 SSAFY목표 기억력 게임</title>
+    <style>
+        body {
+            background: #b2f7ef;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Malgun Gothic', Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        h1 {
+            margin-top: 40px;
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+            color: #2d7ff9;
+            letter-spacing: 1px;
+        }
+        #gameArea {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 110px);
+            grid-template-rows: repeat(3, 110px);
+            gap: 18px;
+            margin-bottom: 30px;
+        }
+        .card {
+            background: #e0f7fa;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            user-select: none;
+            text-align: center;
+            padding: 10px;
+            color: #2d7ff9;
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+            position: relative;
+        }
+        .card.flipped, .card.matched {
+            background: #fffde7;
+            color: #00bfae;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+            cursor: default;
+        }
+        .card.center {
+            background: #ffd6e0;
+            color: #d72660;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: default;
+        }
+        #startBtn {
+            background: #00bfae;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            padding: 12px 38px;
+            margin-bottom: 30px;
+            margin-top: 10px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: background 0.2s;
+        }
+        #startBtn:active {
+            background: #009e8e;
+        }
+        #message {
+            font-size: 1.3rem;
+            color: #d72660;
+            margin-top: 20px;
+            font-weight: bold;
+            text-align: center;
+            min-height: 2.5em;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎉 SSAFY목표 기억력 게임</h1>
+    <div id="gameArea">
+        <button id="startBtn">게임 시작</button>
+        <div class="grid" id="gameGrid"></div>
+        <div id="message"></div>
+    </div>
+    <script>
+        // 목표카드(4가지, 각 2장씩)
+        const goals = [
+            '알고리즘 향상',
+            '알고리즘 향상',
+            '1학기 성적우수',
+            '1학기 성적우수',
+            '취뽀하기',
+            '취뽀하기',
+            'B형취득',
+            'B형취득'
+        ];
+        let cards = [];
+        let firstCard = null;
+        let secondCard = null;
+        let lock = false;
+        let matchedCount = 0;
+        let previewTimeout = null;
+        let gameEnded = false;
+        const grid = document.getElementById('gameGrid');
+        const messageDiv = document.getElementById('message');
+        const startBtn = document.getElementById('startBtn');
+
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        function createCards() {
+            shuffle(goals);
+            const arr = [];
+            let goalIdx = 0;
+            for (let i = 0; i < 9; i++) {
+                if (i === 4) {
+                    arr.push({ text: '14기 파이팅❤️‍🔥', center: true, flipped: true, matched: true });
+                } else {
+                    arr.push({ text: goals[goalIdx++], center: false, flipped: false, matched: false });
+                }
+            }
+            return arr;
+        }
+
+        function render() {
+            grid.innerHTML = '';
+            cards.forEach((card, idx) => {
+                const div = document.createElement('div');
+                div.className = 'card' + (card.center ? ' center' : '') + (card.flipped ? ' flipped' : '') + (card.matched ? ' matched' : '');
+                div.textContent = card.flipped || card.center || card.matched ? card.text : '';
+                // center만 제외하고 모든 카드에 클릭 이벤트 부여, 실제 동작은 onCardClick에서 제어
+                if (!card.center) {
+                    div.addEventListener('click', () => onCardClick(idx));
+                }
+                grid.appendChild(div);
+            });
+        }
+
+        function onCardClick(idx) {
+            // robust: 클릭 가능 조건 - matched/flipped/lock/gameEnded이면 무시
+            if (lock || cards[idx].flipped || cards[idx].matched || gameEnded) return;
+            cards[idx].flipped = true;
+            if (firstCard === null) {
+                firstCard = idx;
+                render();
+            } else {
+                secondCard = idx;
+                lock = true;
+                render();
+                setTimeout(() => {
+                    checkMatch();
+                }, 700);
+            }
+        }
+
+        function checkMatch() {
+            if (cards[firstCard].text === cards[secondCard].text) {
+                cards[firstCard].matched = true;
+                cards[secondCard].matched = true;
+                matchedCount += 2;
+            } else {
+                cards[firstCard].flipped = false;
+                cards[secondCard].flipped = false;
+            }
+            firstCard = null;
+            secondCard = null;
+            lock = false;
+            if (matchedCount === 8) {
+                messageDiv.textContent = 'SSAFY가 목표를 이룰 수 있도록 항상 응원하겠습니다.❤️';
+                gameEnded = true;
+            }
+            render();
+        }
+
+        function showAllCards() {
+            cards.forEach(card => { if (!card.center) card.flipped = true; });
+            render();
+        }
+        function hideAllCards() {
+            cards.forEach(card => { if (!card.center) card.flipped = false; });
+            render();
+        }
+
+        function startGame() {
+            cards = createCards();
+            firstCard = null;
+            secondCard = null;
+            lock = true;
+            matchedCount = 0;
+            gameEnded = false;
+            messageDiv.textContent = '';
+            render();
+            showAllCards();
+            if (previewTimeout) clearTimeout(previewTimeout);
+            previewTimeout = setTimeout(() => {
+                hideAllCards();
+                lock = false;
+                firstCard = null;
+                secondCard = null;
+            }, 3000);
+        }
+
+        startBtn.addEventListener('click', startGame);
+        render();
+    </script>
+</body>
+</html>
