@@ -21,15 +21,18 @@ add 전 status를 생활화 하자
 #### ❓ 꼭 과제 하나 당 하나의 디렉토리를 사용해아 하나?  
 > ❗ 바깥 directory를 git으로 관리해 하위 폴더를 git으로 관리할 수 있음 : sub module   
 단, 사용법을 숙지하고 진행해야 함  
-➕ 만약 제대로 사용하지 못했다면, 상위 디렉토리 기준으로 하위 디렉토리를 없앤다 = 하위 디렉토리의 위치를 옮긴다.    
+
+> ➕ 만약 제대로 사용하지 못했다면,  
+상위 디렉토리 기준으로 하위 디렉토리를 없앤다 = 하위 디렉토리의 위치를 옮긴다.    
 -> 상위 디렉토리에서 add(하위 디렉토리 없어진 것이 저장됨)  
 -> 하위 디렉토리의 .git 없애고 필요할 경우 다시 기록  
 
 #### ❓push가 안 되는 이유  
 > ❗원격 저장소와 로컬이 가진 commit 기록이 서로 다르기 때문에 발생한다.   
-${\textsf{\color{#013DFD}pull}}$은 원격 -> 로컬 / <span style="color: #0EFCFE">push</span>는 로컬 -> 원격</span>  
+${\textsf{\color{#1E90FF}pull}}$은 원격 -> 로컬 / ${\textsf{\color{#1E90FF}push}}$는 로컬 -> 원격</span>  
 pull을 받으면 문제가 해결된다.  
-➕ push에 문제가 생겼을 때 가장 최신 버전이 있는 공간은 원격 저장소이기 때문에 문제가 발생함  
+
+> ➕ push에 문제가 생겼을 때 가장 최신 버전이 있는 공간은 원격 저장소이기 때문에 문제가 발생함  
 => pull 받으면 문제를 해결할 수 있음  
 
 ## Branch  
@@ -42,7 +45,7 @@ pull을 받으면 문제가 해결된다.
 2. 하나의 작업은 하나의 브랜치로 나누어 체계적인 협업과 개발 가능  
 3. 손쉽게 브랜치를 생성하고 브랜치 사이를 이동할 수 있음  
   
-#### 상황 설정
+#### 예시 상황
 1. 팀원 A는 로그인
 2. 팀원 B는 게시글 작성  
 3. 팀원 A, B는 모두 settings.py의 내용을 필요로 함  
@@ -87,12 +90,12 @@ $ git merge [branch 이름]
 ### 두 종류의 MERGE
 #### ❓ 왜 어떤 merge를 진행할 때는 vim을 열게 되는 걸까?  
 1. master 브랜치에서 초기 설정  
-2. viktor가 수행한 작업을 merge 했을 때:  
-  master의 최종 상태로부터 viktor 작업물을 추가하면 되기 때문에 **Fast-Forward merge**를 수행함  
-  ➕ 현재 가장 최신 상태는 merge viktor 이후  
+2. ${\textsf{\color{#1E90FF}A}}$가 수행한 작업을 merge 했을 때:  
+  master의 최종 상태로부터 ${\textsf{\color{#1E90FF}A}}$ 작업물을 추가하면 되기 때문에 **Fast-Forward merge**를 수행함  
+    * 이후 가장 최신 상태는 ${\textsf{\color{#1E90FF}A}}$의 작업물이 merge된 master  
 
-3. harry 입장에서는 **master의 초기 상태**를 불러와 article 작업을 완료함  
-  현재 최신 상태 + article 작업을 합쳐 하나의 commit을 수행하며, 이를 **Three way merge**라 칭함
+3. 팀원 ${\textsf{\color{#FF3232}B}}$ 입장에서는 **master의 초기 상태**를 불러와 article 작업을 완료함  
+  (A 작업물이 합쳐진)현재 최신 상태에 article 작업을 합쳐 하나의 commit을 수행하며, 이를 **Three way merge**라 칭함
 
 ## GIT Lab 사용하기
 ![Fig 1.](image.png)  
@@ -114,40 +117,45 @@ branch merge 요청을 보내기 위한 작업
 사용이 끝난 branch는 삭제한다!  
 단, 원격저장소에서만 merge된 경우, 로컬에서도 pull을 통해 병합해야 로컬에도 반영 / 사용 끝난 branch를 삭제할 수 있음    
 
+## Conflict 해결  
 
 #### ❓ 서로 다른 두 개의 branch에서 동일한 파일의 동일한 줄을 수정하면 어떻게 될까?  
 > ❗conflict가 발생한다.    
 
 #### conflict 발생한 상황 묘사)  
-- harrry와 viktor가 모두 원격 저장소의 develop branch를 pull 해서 동일한 파일인 `settings.py` 파일에서 작업했다.  
-- viktor가 먼저 작업을 끝내 원격저장소의 viktor branch에 push  
-- harry가 나중에 작업을 끝내고 원격저장소의 harry branch에 push  
-- 팀장은 viktor branch를 먼저 merge 했다.  
+- ${\textsf{\color{#1E90FF}harry}}$와 ${\textsf{\color{#FF3232}viktor}}$가 모두 원격 저장소의 develop branch를 pull 해서 동일한 파일인 `settings.py` 파일에서 작업했다.  
+- ${\textsf{\color{#FF3232}viktor}}$가 먼저 작업을 끝내 원격저장소의 ${\textsf{\color{#FF3232}viktor}}$ branch에 push  
+- ${\textsf{\color{#1E90FF}harry}}$가 나중에 작업을 끝내고 원격저장소의 ${\textsf{\color{#1E90FF}harry}}$ branch에 push  
+- 팀장은 ${\textsf{\color{#FF3232}viktor}}$ branch를 먼저 merge 했다.  
 
-=> 위의 경우, harry의 작업물을 합치는 과정에서 conflict가 발생한다.  
+=> 위의 경우, ${\textsf{\color{#1E90FF}harry}}$의 작업물을 합치는 과정에서 conflict가 발생한다.  
 
-![conflict 발생](image-4.png)
+![conflict 발생](image-4.png)  
+[Fig n.] conflict 발생 시 화면
 
 #### conflict 해결 프로세스)  
-1. harry가 자신의 local 저장소/개인 브랜치에서  
+1. ${\textsf{\color{#1E90FF}harry}}$가 자신의 local 저장소/개인 브랜치에서  
 2. develop 브랜치를 merge 받아서 수정  
 3. conflict를 해결하고 다시 git status - add - commit - push 진행(자신의 브랜치로 push)  
 
 
 ![alt text](image-5.png)  
+[Fig n.] conflict 발생 후 develop 브랜치를 merge한 후의 ${\textsf{\color{#1E90FF}harry}}$의 로컬 화면  
 
 **current / incoming / both** 중 선택할 수 있음  
 > #### current는 마지막 merge 이전의 최종 ver을 받아들임  
 > #### incoming은 최종 merge한 branch의 코드를 받아옴  
-> #### both는 둘 다 받아들임 -> 여기서 수정할 수도 있음  
+> #### both는 둘 다 받아들임 -> 추가 수정 가능    
 
-![alt text](image-6.png)  
+![alt text](image-6.png)
+[Fig n.] conflict 발생 시 branch 이름 변화  
+
 위처럼 conflict가 발생했을 때는 브랜치 이름 옆에 MERGING이 표시된다.  
 commit으로 conflict가 해결되면 사라지므로 브랜치 이름을 꼭 확인하자.  
 
 
 원격저장소에서 모두 정상적으로 merge 하고나면, 그 다음에 local의 브랜치에서 pull    
-master branch에는 최종 완성본만 저장됨  
+master branch에는 최종 완성본만 저장하자.  
 
 > 제일 중요한 것: git 명령어를 작성하고 출력된 결과를 천천히 읽어보기  
 

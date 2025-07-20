@@ -49,7 +49,7 @@ $ git init
 
 ![Fig 2. git의 버전 관리 확인](image-1.png)  
 
-<span style="color: #848482">[Fig 2.] 경로 옆에 <span style="color: #0EFCFE">(master)</span>가 생긴 것을 확인할 수 있음</span>  
+${\textsf{\color{#848482}[Fig\ 2.]\ 경로\ 옆에}}$ ${\textsf{\color{#0EFCFE}(master)}}$ ${\textsf{\color{#848482}가 생긴 것을 확인할 수 있음}}$  
 
 ![Fig 3. .git 파일이 새로 생김](image-2.png)  
 <span style="color: #848482">[Fig 3.] 또한 <span style="color: #0EFCFE">.git</span> 폴더가 생긴 것을 확인할 수 있음</span>      
