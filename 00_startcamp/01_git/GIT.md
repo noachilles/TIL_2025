@@ -87,8 +87,8 @@ ${\textsf{\color{#848482}[Fig 7.] user 정보가 저장되어 있지 않아 comm
 commit의 필수 요건인 -m "commit message"를 추가하지 않으면  
 vim으로 연결된다 -> ':q'를 입력해서 나가면 됨  
 
-![Fig 8.](image-8.png)
-${\textsf{\color{#848482}[Fig 8.] vim 화면.}}$  
+![Fig 7.](image-8.png)  
+${\textsf{\color{#848482}[Fig 7.] vim 화면.}}$  
 
 ```bash
 # config는 설정, global은 전역 설정을 위한 옵션
@@ -115,7 +115,7 @@ $ code ~/.gitconfig
 $ git log
 ```
 
-![Fig 8.](image-7.png)  
+![Fig 8.](image-7.png)    
 ${\textsf{\color{#848482}[Fig 8.] commit(저장)한 내용 출력}}$
 
 
