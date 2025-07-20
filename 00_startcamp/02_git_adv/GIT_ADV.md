@@ -7,7 +7,7 @@
 2. (status / add / commit) * n
 3. push 
 ``` 
-add 전 status를 생활화 하자
+${\textsf{\color{#FF3232}add 전 status를 생활화 하자}}$ 
 
 ## 몇 가지 질문에 대한 대답
 
@@ -99,23 +99,25 @@ $ git merge [branch 이름]
 
 ## GIT Lab 사용하기
 ![Fig 1.](image.png)  
-[Fig 1.] 프로젝트 생성 이후 Manage - Members에서 멤버 및 권한 관리  
+${\textsf{\color{#848482}[Fig 1.] 프로젝트 생성 이후 Manage - Members에서 멤버 및 권한 관리}}$  
 
 ![Fig 2.](image-2.png)  
-[Fig 2.] 삭제가 필요할 때는 Settings - General - ...
+${\textsf{\color{#848482}[Fig 2.] 삭제가 필요할 때는 Settings - General - Advanced - Delete project}}$
 
-각 로컬에서 branch를 생성하고 switch로 개별 작업공간에서 작업을 이룸  
+1. 원격저장소(GIT Lab)를 local에 clone  
+2. 원격저장소의 공용 작업 branch를 pull  
+3. 개인 로컬에서 branch를 생성하고 switch로 개별 작업공간에서 작업 수행  
+4. 이후 add / commit 하고, 개인 branch로 push  
 
-이후에 add / commit 하고  
-새로 생성한 브랜치로 올리면 각 로컬의 branch commit이 원격저장소에 저장됨    
+이어서...
 
 ![Fig 3.](image-3.png)  
-[Fig 3.] Merge requests를 보냄   
+${\textsf{\color{#848482}[Fig 3.] 개인 branch -> 공용 branch로 Merge requests}}$   
 
-branch merge 요청을 보내기 위한 작업  
+5. 개인 branch 내용을 공용 branch에서 merge 하기 위해 merge requests 보냄  
+6. 사용이 끝난 branch 삭제
 
-사용이 끝난 branch는 삭제한다!  
-단, 원격저장소에서만 merge된 경우, 로컬에서도 pull을 통해 병합해야 로컬에도 반영 / 사용 끝난 branch를 삭제할 수 있음    
+> 단, 원격저장소에서만 merge된 경우, 로컬에서도 pull을 통해 병합해야 로컬에도 반영되며 사용 끝난 branch를 삭제할 수 있음    
 
 ## Conflict 해결  
 
@@ -131,7 +133,7 @@ branch merge 요청을 보내기 위한 작업
 => 위의 경우, ${\textsf{\color{#1E90FF}harry}}$의 작업물을 합치는 과정에서 conflict가 발생한다.  
 
 ![conflict 발생](image-4.png)  
-[Fig n.] conflict 발생 시 화면
+${\textsf{\color{#848482}[Fig 4.] conflict 발생 시 화면}}$
 
 #### conflict 해결 프로세스)  
 1. ${\textsf{\color{#1E90FF}harry}}$가 자신의 local 저장소/개인 브랜치에서  
@@ -140,7 +142,7 @@ branch merge 요청을 보내기 위한 작업
 
 
 ![alt text](image-5.png)  
-[Fig n.] conflict 발생 후 develop 브랜치를 merge한 후의 ${\textsf{\color{#1E90FF}harry}}$의 로컬 화면  
+${\textsf{\color{#848482}[Fig 5.] conflict 발생 후 develop 브랜치를 merge한 후}}$ ${\textsf{\color{#1E90FF}harry}}$ ${\textsf{\color{#848482}의 로컬 화면}}$  
 
 **current / incoming / both** 중 선택할 수 있음  
 > #### current는 마지막 merge 이전의 최종 ver을 받아들임  
@@ -148,14 +150,15 @@ branch merge 요청을 보내기 위한 작업
 > #### both는 둘 다 받아들임 -> 추가 수정 가능    
 
 ![alt text](image-6.png)
-[Fig n.] conflict 발생 시 branch 이름 변화  
+${\textsf{\color{#848482}[Fig 6.] conflict 발생 시 branch 이름 변화}}$  
 
 위처럼 conflict가 발생했을 때는 브랜치 이름 옆에 MERGING이 표시된다.  
 commit으로 conflict가 해결되면 사라지므로 브랜치 이름을 꼭 확인하자.  
 
 
 원격저장소에서 모두 정상적으로 merge 하고나면, 그 다음에 local의 브랜치에서 pull    
-master branch에는 최종 완성본만 저장하자.  
+
+> master branch에는 최종 완성본만 저장하자.  
 
 > 제일 중요한 것: git 명령어를 작성하고 출력된 결과를 천천히 읽어보기  
 
