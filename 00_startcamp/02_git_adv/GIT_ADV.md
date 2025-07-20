@@ -1,5 +1,7 @@
 # GIT Advanced
 
+* Local: 개인 PC의 저장소(작업공간)  
+* 원격저장소(Remote): GitLab / Github 등
 
 #### 앞으로 매일의 루틴)  
 ```
@@ -109,8 +111,6 @@ ${\textsf{\color{#848482}[Fig 2.] 삭제가 필요할 때는 Settings - General 
 3. 개인 로컬에서 branch를 생성하고 switch로 개별 작업공간에서 작업 수행  
 4. 이후 add / commit 하고, 개인 branch로 push  
 
-이어서...
-
 ![Fig 3.](image-3.png)  
 ${\textsf{\color{#848482}[Fig 3.] 개인 branch -> 공용 branch로 Merge requests}}$   
 
@@ -149,7 +149,7 @@ ${\textsf{\color{#848482}[Fig 5.] conflict 발생 후 develop 브랜치를 merge
 > #### incoming은 최종 merge한 branch의 코드를 받아옴  
 > #### both는 둘 다 받아들임 -> 추가 수정 가능    
 
-![alt text](image-6.png)
+![alt text](image-6.png)  
 ${\textsf{\color{#848482}[Fig 6.] conflict 발생 시 branch 이름 변화}}$  
 
 위처럼 conflict가 발생했을 때는 브랜치 이름 옆에 MERGING이 표시된다.  
@@ -158,9 +158,7 @@ commit으로 conflict가 해결되면 사라지므로 브랜치 이름을 꼭 �
 
 원격저장소에서 모두 정상적으로 merge 하고나면, 그 다음에 local의 브랜치에서 pull    
 
-> master branch에는 최종 완성본만 저장하자.  
-
-> 제일 중요한 것: git 명령어를 작성하고 출력된 결과를 천천히 읽어보기  
+${\textsf{\color{#FF3232}제일 중요한 것: git 명령어를 작성하고 출력된 결과를 천천히 읽어보기}}$   
 
 
 끝
