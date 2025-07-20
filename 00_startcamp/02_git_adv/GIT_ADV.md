@@ -27,7 +27,7 @@ add 전 status를 생활화 하자
 
 #### ❓push가 안 되는 이유  
 > ❗원격 저장소와 로컬이 가진 commit 기록이 서로 다르기 때문에 발생한다.   
-${\textsf{\color{#0EFCFE}pull}}$은 원격 -> 로컬 / <span style="color: #0EFCFE">push</span>는 로컬 -> 원격</span>  
+${\textsf{\color{#013DFD}pull}}$은 원격 -> 로컬 / <span style="color: #0EFCFE">push</span>는 로컬 -> 원격</span>  
 pull을 받으면 문제가 해결된다.  
 ➕ push에 문제가 생겼을 때 가장 최신 버전이 있는 공간은 원격 저장소이기 때문에 문제가 발생함  
 => pull 받으면 문제를 해결할 수 있음  
