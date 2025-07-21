@@ -5,4 +5,3 @@ def make_sum(pram1, pram2):
     3
     """
     return pram1 + pram2
-

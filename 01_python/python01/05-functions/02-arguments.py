@@ -21,15 +21,15 @@ def greet(name, age):
 greet(name='Dave', age=35)  # 안녕하세요, Dave님! 35살이시군요.
 
 
-# Arbitrary Argument Lists 
-def calculate_sum(*args):
+# Arbitrary Argument Lists - tuple로 넘어감
+def calculate_sum(*args): 
     print(args)
     total = sum(args)
     print(f'합계: {total}')
 calculate_sum(1, 2, 3)
 
 
-# Arbitrary Keyword Argument Lists 
+# Arbitrary Keyword Argument Lists - dict로 넘어감
 def print_info(**kwargs):
     print(kwargs)
 print_info(name='Eve', age=30)  # {'name': 'Eve', 'age': 30}

@@ -33,7 +33,7 @@ en_scores = [40, 20, 30, 50]
 for student_scores in zip(kr_scores, math_scores, en_scores):
     print(student_scores)
 
-
+# 2차원 리스트의 같은 컬럼 요소를 동시에 조회할 때  
 scores = [
     [10, 20, 30],
     [40, 50, 39],
