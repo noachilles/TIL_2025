@@ -48,4 +48,3 @@ map obj를 그대로 사용할 수 없고, list 등을 사용해 type conversion
 zip obj 역시 그대로 사용할 수 없고, list 등으로 type conversion 거쳐야 함  
 * 여러 개의 리스트를 동시에 조회할 때 활용할 수 있음  
 * 2차원 리스트와 같은 컬럼 요소를 동시에 조회할 때 사용할 수 있음  
-
