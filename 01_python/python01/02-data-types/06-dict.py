@@ -17,7 +17,7 @@ my_dict['apple'] = 100
 print(my_dict) # {'apple': 100, 'list': [1, 2, 3], 'banana': 50}
 
 
-# get
+# get - get을 사용하면 키가 없을 때 KeyError를 방지할 수 있음  
 person = {'name': 'Alice', 'age': 25}
 print(person.get('name'))  # Alice
 print(person.get('country'))  # None
