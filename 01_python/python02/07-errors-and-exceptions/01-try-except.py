@@ -14,6 +14,7 @@ except ValueError:
 숫자가 아닙니다.
 """
 
+# raise: 원하는 값이 나오지 않았을 때 Error를 발생시킬 수 있음  
 
 try:
     num = int(input('100으로 나눌 값을 입력하시오 : '))
