@@ -1,4 +1,5 @@
 # GitHub를 활용해서 알고리즘 스터디 레포지토리 관리하기  
+
 ## GitHub Fork  
 타인의 개인의 레포지토리에 기록을 남기며, 소위 얘기하는 '잔디를 심기' 위해 fork를 사용할 수 있습니다.  
 #### fork란  
@@ -13,8 +14,7 @@
 팀장을 포함한 모든 팀원은 개인 레포지토리를 로컬 저장소에 `clone` 합니다. 
 ![alt text](image-4.png)
 
-개인별 문제를 풀이하고, 이를 repository에 업로드합니다.  
-
+개인별 문제를 풀이하고, 이를 repository에 `push`합니다.  
 별도 설정하지 않았으면 기본 branch name은 `main`으로 설정되어 있습니다. `push`할 때 참고해주세요.  
 
 ![alt text](image-5.png)  
@@ -22,11 +22,25 @@
 
 ![alt text](image-9.png)
 
+자신의 repository에서 pull requests - New pull request 클릭
 
-![alt text](image-10.png)
+![alt text](image-10.png)  
 
-![alt text](image-6.png)
+New pull request를 클릭하면, 상단의 repository 계정이 팀장의 계정으로 바뀝니다.  
+우측의 Create pull request 클릭  
+
+![alt text](image-6.png)  
+
+팀장은 자신의 레포지토리에서 Pull requests를 확인합니다.  
 
 ![alt text](image-7.png)  
 
-![alt text](image-11.png)
+충돌을 확인하고 Merge pull request를 수행합니다.  
+
+![alt text](image-11.png)  
+
+그럼 팀장을 포함한 모든 팀원의 레포지토리 내용이 변경된 것을 확인할 수 있습니다!  
+
+추가로, 레포지토리 내 날짜, 문제별 폴더를 만들고 파일을 정리하는 것을 추천합니다.  
+
+끝.
