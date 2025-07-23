@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 전체 선택자 */
+    * {
+      color: red;
+    }
+
+    h2 {
+      color: orange;
+    }
+
+    .green {
+      color: green;
+    }
+
+    #purple {
+      color: purple;
+    }
+
+    .green li {
+      color: brown;
+    }
+
+    .green > li {
+      font-size: 30px;
+    }
+    
+  </style>
+</head>
+<body>
+  <h1 class="green" style="color: yellow">Heading</h1>
+  <h2>선택자</h2>
+  <h3>연습</h3>
+  <h4>반가워요</h4>
+  <p id="purple">과목 목록</p>
+  <ul class="green">
+    <li>파이썬</li>
+    <li>알고리즘</li>
+    <li>웹
+      <ol>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>PYTHON</li>
+      </ol>
+    </li>
+  </ul>
+  <p class="green">Lorem, <span>ipsum</span> dolor.</p>
+</body>
+
+</html>

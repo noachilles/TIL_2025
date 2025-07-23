@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: crimson;
+      border: 1px solid black;
+    }
+
+    .margin-auto {
+      margin: 0 auto;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .inline-block {
+      display: inline-block;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 1. block -->
+  <!-- margin: auto 사용 -->
+  <div class="box margin-auto">
+  </div>
+
+  <hr>
+
+  <!-- 2. inline -->
+  <!-- text-align 사용 -->
+  <div class="text-center">
+    <span>inline 요소</span>
+  </div>
+
+  <hr>
+
+  <!-- 3. inline-block -->
+  <!-- text-align: center 사용 -->
+  <div class="text-center">
+    <div class="box inline-block"></div>
+  </div>
+</body>
+
+</html>
