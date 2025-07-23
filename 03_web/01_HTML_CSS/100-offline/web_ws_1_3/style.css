@@ -1,0 +1,20 @@
+h2 {
+  color: darkviolet !important 
+}
+
+p {
+  color: orange
+}
+
+.blue {
+  color: blue
+}
+
+.green {
+  color: green 
+  /* 같은 명시도일 때는 아래에 위치한 코드가 우선순위 높음 */
+}
+
+#red {
+  color: red
+}

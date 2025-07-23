@@ -51,6 +51,8 @@
 ### 결합자 (Combinators)  
 
 * 자손 결합자와 자식 결합자의 차이는 무엇일까?  
+  * 공백 구분은: 자손 결합자 - 직계 자식이 아니어도 적용 가능  
+  * '>' 구분은: 자식 결합자 - 직계 자식이어야 적용 가능
 
 
 ```css
@@ -99,6 +101,39 @@ inline style은 따로 specificity가 출력되지는 않음
 * 상속되지 않는 속성  
   * box 모델 - 사이즈가 바깥 box / 내부 box 동일하면 곤란하겠죠  
 
+실습 4번으로 알아보는 상속 내용  
+각 요소들은 inherited가 기본적으로 yes인 요소와 no인 요소로 구분할 수 있고, no인 경우에도 'inherit' 요소를 사용해서 상속받을 수 있음  
+사용 방법은 아래와 같음  
+'상속 받는 대상'을 기준으로 inherit를 작성해야 정상적으로 작동됨  
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    .text-red {
+      color: red;
+      border: 1px solid #bcbcbc;
+      padding: 10px;
+    }
+    .text-red button {
+      color: inherit;
+
+    }
+  </style>
+</head>
+<body>
+  <div class="text-red">
+    <h1>Heading</h1>
+    <p>Paragraph<strong>strong</strong></p>
+    <button>Button</button>
+  </div>
+</body>
+</html>
+```
+
+
 ## CSS BOX Model
 ### Outer display type - block 특징  
 * width와 height 속성 사용 가능  
@@ -127,7 +162,7 @@ flex(Inner display type)를 사용해 block 내부의 요소들을 자식으로 
 
 **CSS의 모든 속성은 외우는 것이 아님**
 
-### MDB Web Docs  
+### MDN Web Docs  
 Mozilla Developer Network에서 제공하는 온라인 문제  
 웹 개발자와 디자이너를 위한 종합적인 참고 자료  
 HTML, CSS, JS, API, 개발 도구 등 정보 제공  

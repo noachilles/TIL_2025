@@ -68,3 +68,12 @@ kebab-case: ex) `editor-note`
 
 * 공백 처리  
 * 에러 출력 없음 - 문법 오류 있어도 별도의 에러 메시지 출력 X  
+
+## 실제 문서 제작 시 팁 - sementic tag를 사용하자  
+<header>
+<nav>
+<aside>
+<section>
+<article>
+
+강조는 <strong>

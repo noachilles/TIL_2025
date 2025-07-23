@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    form{
+      text-align: left;
+      margin-left: 50px;
+    }
+    input{
+      width: 150px;
+    }
+    #login{
+      width: 60px;
+    }
+    label{
+      font-family: Georgia, serif;
+      width: 200px;
+    }
+  </style>
+
+</head>
+<body>
+  <form>
+    <label for="username">USERNAME: </label>
+    <input
+      type="text"
+      id="username"
+      name="username"
+      required
+      size="20"
+      placeholder="아이디를 입력하세요"
+    />
+  </form>
+  <form>
+    <label for="password">PWD: </label>
+    <input
+      type="password"
+      id="password"
+      name="password"
+      required
+      size="20"
+    />
+    <input 
+      type="button"
+      id="login"
+      value="로그인"
+    />
+  </form>
+</body>
+</html>

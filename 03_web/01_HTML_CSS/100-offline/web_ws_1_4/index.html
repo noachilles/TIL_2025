@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .outer-box {
+      width : 400px;
+      height: 200px;
+      border: 2px solid black;
+    }
+
+		/* 추가 css 코드 작성 1 */
+		div{
+      color: red;
+      text-align: center;
+    }
+    
+    .inner-box {
+      width : 200px;
+      height: 100px;
+			/* 추가 css 코드 작성 2 */
+			border: inherit;
+      color: black;
+      text-align: left;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="outer-box">
+    <div>
+      <span>첫 번째</span>
+    </div>
+    <div class="inner-box">
+      <span>두 번째</span>
+    </div>
+  </div>
+</body>
+</html>
