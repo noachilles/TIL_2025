@@ -47,13 +47,13 @@ head 태그 내부는 HTML 문서에 관련된 설명 설정 등, 컴퓨터가 �
 
 kebab-case: ex) `editor-note`  
 
-![Fig1. Highlight Maching Tag](image.png)  
+![Fig1. Highlight Maching Tag](src/image.png)  
 역할: <h1>를 하이라이팅 했을 때, </h1>를 같이 하이라이팅 해서 언제 끝나는지 알려줌  
 
-![Fig2. Auto Rename Tag](image-1.png)  
+![Fig2. Auto Rename Tag](src/image-1.png)  
 역할: <h1>을 수정할 때 </h1>도 함께 수정해줌  
 
-![Fig3. open in browser](image-2.png)  
+![Fig3. open in browser](src/image-2.png)  
 역할: `alt` + `B`로 html 바로 실행해볼 수 있음  
 
 ## 웹 구조화  

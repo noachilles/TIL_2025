@@ -56,7 +56,7 @@ print(c2.pi) # 5
 * 인스턴스를 만들면 => 인스턴스 객체가 생성 / 독립적인 name space 생성  
 * 인스턴스에서 특정 속성 접근 => 인스턴스 > 클래스 순으로 탐색 (❗LEGB와 다름)  
 
-![Fig 1. 인스턴스와 클래스 name space](image.png)  
+![Fig 1. 인스턴스와 클래스 name space](src/image.png)  
 [Fig 1. 인스턴스와 클래스의 name space 시각화]  
 
 # 상속  
