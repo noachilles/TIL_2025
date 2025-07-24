@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      position: relative;
+    }
+
+    .box {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+    }
+
+    .red {
+      background-color: red;
+      top: 50px;
+      left: 50px;
+      /* z-index: 3; */
+    }
+
+    .green {
+      background-color: green;
+      top: 100px;
+      left: 100px;
+      /* z-index: 2; */
+    }
+
+    .blue {
+      background-color: blue;
+      top: 150px;
+      left: 150px;
+      /* z-index: 1; */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="box red">z-index: 3</div>
+    <div class="box green">z-index: 2</div>
+    <div class="box blue">z-index: 1</div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flexbox 레이아웃 예시</title>
+  <style>
+    body {
+      display: flex;
+      /* 자식 요소들을 세로로 배치 */
+      flex-direction: column;
+      /* 최소 높이를 뷰포트 높이로 설정하여 전체 화면 차지 */
+      min-height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .box {
+      background-color: #f0f0f0;
+      border: 1px solid #000;
+      padding: 20px;
+      margin: 5px;
+    }
+
+    header {
+      /* 헤더가 축소되지 않도록 설정 */
+      flex-shrink: 0;
+      display: flex;
+      /* 로고와 네비게이션을 양쪽으로 정렬 */
+      justify-content: space-between;
+      /* 세로 방향 중앙 정렬 */
+      align-items: center;
+      padding: 10px 20px;
+    }
+
+    header h1 {
+      margin: 0;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      /* 네비게이션 항목을 가로로 배열 */
+      display: flex;
+    }
+
+    nav ul li {
+      margin-left: 20px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    main {
+      /* 남은 공간을 모두 차지하도록 설정 */
+      flex-grow: 1;
+      display: flex;
+      /* 사이드바와 콘텐츠 사이에 공간 분배 */
+      justify-content: space-between;
+    }
+
+    .sidebar {
+      width: 200px;
+      display: flex;
+      /* 내부 요소를 세로로 배치 */
+      flex-direction: column;
+      /* 내용을 위쪽에서 시작 */
+      justify-content: flex-start;
+      /* 가로 방향 중앙 정렬 */
+      align-items: center;
+    }
+
+    .content {
+      flex-grow: 1;
+      display: flex;
+      /* 가로 & 세로 방향 중앙 정렬 */
+      justify-content: center;
+      align-items: center;
+    }
+
+    footer {
+      /* 푸터가 축소되지 않도록 설정 */
+      flex-shrink: 0;
+      display: flex;
+      /* 가로 & 세로 방향 중앙 정렬 */
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="box">
+    <h1>웹사이트 제목</h1>
+    <nav>
+      <ul>
+        <li><a href="#home">홈</a></li>
+        <li><a href="#about">소개</a></li>
+        <li><a href="#services">서비스</a></li>
+        <li><a href="#contact">연락처</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <aside class="sidebar box">
+      <h2>사이드바</h2>
+      <ul>
+        <li>메뉴 1</li>
+        <li>메뉴 2</li>
+        <li>메뉴 3</li>
+      </ul>
+    </aside>
+    <section class="content box">
+      <h2>메인 콘텐츠</h2>
+    </section>
+  </main>
+  <footer class="box">
+    <p>푸터 - 저작권 정보 등</p>
+  </footer>
+</body>
+
+</html>

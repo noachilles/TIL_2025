@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      height: 500px;
+      border: 1px solid black;
+      display: flex;
+      flex-direction: row; /* flex-direction은 기본값이 row */
+      /* flex-direction: column; */
+      /* flex-direction: row-reverse; */
+      /* flex-direction: column-reverse; */
+
+      /* flex-wrap: nowrap; */
+      /* flex-wrap: wrap; */
+
+      /* justify-content: flex-start; */
+      /* justify-content: center; */
+      /* justify-content: flex-end; */
+
+      /* align-content: flex-start; */
+      /* align-content: center; */
+      /* align-content: flex-end; */
+
+      /* align-items: flex-start; */
+      /* align-items: center; */
+      /* align-items: flex-end; */
+    }
+
+    .post {
+      background-color: grey;
+      border: 1px solid black;
+      margin: 0.5rem;
+      padding: 0.5rem;
+    }
+
+    .item1 {
+      /* align-self: center; */
+    }
+
+    .item2 {
+      /* align-self: flex-end; */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="post item1">
+      <h2>Post Title 1</h2>
+      <p>Post Content 1</p>
+    </div>
+    <div class="post item2">
+      <h2>Post Title 2</h2>
+      <p>Post Content 2</p>
+    </div>
+    <div class="post item3">
+      <h2>Post Title 3</h2>
+      <p>Post Content 3</p>
+    </div>
+    <div class="post item4">
+      <h2>Post Title 4</h2>
+      <p>Post Content 4</p>
+    </div>
+    
+    <!-- flex-wrap 요소 확인:부모의 범위를 벗어나지 못함 -->
+    <div class="post item4">
+      <h2>Post Title 4</h2>
+      <p>Post Content 4</p>
+    </div>
+    
+    
+  </div>
+
+</body>
+
+</html>

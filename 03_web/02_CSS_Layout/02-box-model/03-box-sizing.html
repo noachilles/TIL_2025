@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 100px;
+      border: 2px solid black;
+      padding: 10px;
+      margin: 20px;
+      background-color: yellow;
+    }
+
+    .content-box {
+      /* box-sizing은 기본값이 content-box */
+    }
+
+    .border-box {
+      box-sizing: border-box;
+      /* border-box 사용하면 요소 전체의 width가 100이 된다. */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box content-box">content-box</div>
+  <div class="box border-box">border-box</div>
+</body>
+
+</html>
