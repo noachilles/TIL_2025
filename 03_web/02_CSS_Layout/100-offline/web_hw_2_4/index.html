@@ -1,0 +1,35 @@
+<!-- 자손 결합자는 ' '을 사용해 결합하며, 직계 자식이 아니어도 해당하는 값을 모두 가리킨다 -->  
+<!-- 자식 결합자는 '>'를 사용해 결합하며, 직계 자식일 경우에만 해당하는 값을 가리킨다 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div p {
+      color: blue;
+      margin-left: 40px;
+    }
+    div > p {
+      color: crimson;
+      margin-left: 0px;
+    }
+
+  </style>
+</head>
+<body>
+  <div>
+    <p>
+      자식
+    </p>
+    <span>
+      <p>손자</p>
+    </span>
+    <p>
+      자식
+    </p>
+  </div>
+</body>
+</html>

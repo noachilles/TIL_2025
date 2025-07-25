@@ -21,7 +21,7 @@
   </style>
 ```
 
-![alt text](image.png)  
+![alt text](src/image-4.png)  
 
 ```css
 <style>
@@ -44,7 +44,7 @@
 </style>
 ```
 
-![alt text](image-1.png)
+![alt text](src/image-5.png)
 
 결과를 바탕으로 style 코드의 우선순위를 생각해보자  
 
@@ -64,7 +64,7 @@
   font-size: 30px;
 }
 ```
-![alt text](image-2.png)  
+![alt text](src/image-6.png)  
 
 ## 웹 스타일링  
 ### Specificity (명시도)  
@@ -88,10 +88,10 @@
 > 2개의 class를 가지고 있는 경우, 명시도가 더 높아짐  
 
 
-![Fig 4. CSS-selectors 우선순위 확인하는 법](image-3.png)  
+![Fig 4. CSS-selectors 우선순위 확인하는 법](src/image-7.png)  
 우선순위는 이렇게 확인할 수 있음  
 
-![Fig 5. Inline Style](image-4.png)  
+![Fig 5. Inline Style](src/image-8.png)  
 inline style은 따로 specificity가 출력되지는 않음  
 
 ### CSS 속성 2가지 분류  
