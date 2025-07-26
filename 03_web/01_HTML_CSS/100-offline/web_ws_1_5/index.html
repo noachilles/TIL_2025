@@ -1,19 +1,3 @@
-<!-- 
- 문단, 제목, 줄 나눔, 구획 등은 Block 요소를 사용하여 작성한다.
-링크, 이미지, 텍스트 강조 등은 Inline 요소를 사용하여 구성한다.
-다음 내용을 포함하도록 HTML을 구성한다:
-상단 SSAFY 로고 이미지와 설명 텍스트
-강조된 문장(굵게, 줄바꿈 포함)
-프로그램 설명 문단
-주관, 후원, 위탁 정보를 포함한 텍스트
-가로줄(hr)을 활용한 구분선
-3개의 이모지 이미지 + 텍스트 구성 목록 (ul 사용)
-
-작성 시 유의사항
-불필요한 구조나 CSS는 작성하지 않는다.
-반드시 의미에 맞는 시멘틱 요소를 사용하도록 한다.
- -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,21 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        div {
-            width: 10px;
+        ul{
+            list-style: none;
+            padding-left: 0;
         }
     </style>
 </head>
 <body>
     <div>
-        <image src="images/ssafy_logo.png" alt="ssafy_logo" width="200px"/>
+        <p>
+            <img src="images/ssafy_logo.png" alt="파란색으로 채워진 검정 테두리의 SSAFY 글씨, SSAFY 로고" width="200px"/>
+            <br>
+            <img src="images/ssafy_banner.png" alt="노트북을 다루고 있는 배경 위로 검정 도형 위의 하얀 글씨 'SAMSUNG\SW\ACADEMY\FOR\YOUTH'" width="200px"/>
+            <br>
+            삼성 청년 아카데미
+            <br>
+            <strong>대한민국 SW의 미래</strong>를 이끕니다.
+        </p>
+        <p>
+            <strong>
+                삼성의 SW 교육 경험과 고용노동부의 취업 지원 노하우를 바탕으로, 취업 준비생에게 SW 역량 향상 교육 및 다양한 취업지원 서비스를 제공하여 취업에 성공하도록 돕는 프로그램입니다.
+            </strong>
+        </p>
+        <p>
+            본 교육과정은 삼성이 주관하고 고용노동부가 후원하며, 아이들과 미래재단이 함께합니다.
+            <br>
+            (교육운영은 멀티캠퍼스에서 위탁 실시)
+        </p>
     </div>
+    <hr>
     <div>
-        <image src="images/ssafy_banner.png" alt="ssafy_banner" width="200px"/>
-    </div>
-    <div>
-        <p>삼성 청년 아카데미</p>
-        <p>대한민국 SW의 미래를 이끕니다.</p>
+        <p>
+        <strong>주관</strong>
+        <img src="images/multicampus_logo.png" alt="multicampus라고 적힌 글자 요소" width="100px"/>
+        <strong>후원</strong>
+        <img src="images/mob_logo_moel.png" alt="고용노동부 로고" width="100px"/>
+        </p>
+        <ul>
+            <li>
+                <img src="images/happling.png" alt="happling이라는 이름의 캐릭터, 정수리에 싹이 나있고 물방울 형태" width="100px"/>
+                <strong>최고의 교육</strong>
+            </li>
+            <li>
+                <img src="images/happlossom.png" alt="happling이라는 이름의 캐릭터, 머리에 봉우리가 있고 둥근 형태" width="100px"/>
+                <strong>맞춤형 교육</strong>
+            </li>
+            <li>
+                <img src="images/happlower.png" alt="happling이라는 이름의 캐릭터, 머리 주변으로 꽃잎이 둘러져 있고 활짝 웃는 모습" width="100px"/>
+                <strong>자기주도적 학습</strong>
+            </li>
+        </ul>
     </div>
 </body>
 </html>

@@ -1,0 +1,14 @@
+/* style.css */
+
+.top-button {
+    background-color: #333;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;  
+  }
+
+  .top-button a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #fff;
+  }
