@@ -10,22 +10,25 @@
       height: 500px;
       border: 1px solid black;
       display: flex;
-      flex-direction: row; /* flex-direction은 기본값이 row */
-      /* flex-direction: column; */
-      /* flex-direction: row-reverse; */
-      /* flex-direction: column-reverse; */
+      /*flex-direction: row; /* flex-direction은 기본값이 row */
+      flex-direction: column;
+      /* flex-direction: column; 주축 column으로 변경 */
+      /* flex-direction: row-reverse; row 주축인데, 오른쪽부터 */
+      /* flex-direction: column-reverse; column 주축인데, 아래부터 */
+    
+      /* flex-wrap: nowrap; 요소가 범위 넘어가도 줄바꿈 X */
+      /* flex-wrap: wrap; 요소가 범위 넘어가면 줄바꿈 O */
 
-      /* flex-wrap: nowrap; */
-      /* flex-wrap: wrap; */
+      /* 순서는 유지 */
+      /* justify-content: flex-start; content 주축 정렬 - start부터 */
+      /* justify-content: center; content 주축 정렬 - 중앙정렬 */
+      /* justify-content: flex-end; content 주축 정렬 - end부터 */
 
-      /* justify-content: flex-start; */
-      /* justify-content: center; */
-      /* justify-content: flex-end; */
+      /* align-content: flex-start; 교차축 정렬 - start부터 */
+      /* align-content: center; 교차축 정렬 - 중앙 */
+      /* align-content: flex-end; 교차축 정렬 - end부터 */
 
-      /* align-content: flex-start; */
-      /* align-content: center; */
-      /* align-content: flex-end; */
-
+      /* 교차축 기준 중앙 정렬 - content와 다른 점이 뭐지? */
       /* align-items: flex-start; */
       /* align-items: center; */
       /* align-items: flex-end; */

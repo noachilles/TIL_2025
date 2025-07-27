@@ -106,7 +106,7 @@ flexbox를 만들면, 자손X '자식 요소'에 대해서만 관여할 수 있�
 
 ### Flex Container  
 : display: flex; 혹은 display: inline-flex; 가 설정된 부모 요소  
-* 이 컨테이너의 1차 자식 요소들이 Flex Item이 됨  
+* 이 컨테이너의 **1차 자식 요소들**이 Flex Item이 됨  
 
 ### Flex Item  
 : Flex Container 내부에 레이아웃 되는 항목  
