@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .done {
+      text-decoration: line-through;
+    }
+  </style>
+</head>
+<body>
+  <!-- action에 아무것도 안 적으면 현재 경로를 새로고침 -->
+  <form action="/todos/">
+    <input type="text">
+    <button>Todo</button>
+  </form>
+  <ul></ul>
+
+<script>
+  const form = document.querySelector('form')
+
+  function addTodo (event) {
+    // 이벤트를 취소한다. - 상위 form의 action을 막기 위해서
+    event.preventDefault()
+
+    // 입력 element를 찾고 해당 입력 element의 value 값을 저장한다.
+    var userInput = document.querySelector('input')
+    
+    // 만약 입력이 비어있으면 에러메시지 출력
+    if (!userInput.value){
+      window.alert("입력이 비었잖아")
+      return
+    }
+
+    // li element를 생성 후 input element의 value 값을 데이터로 저장한다
+    const todoThing = document.createElement('li')
+    todoThing.innerHTML = userInput.value
+
+    userInput.value = null
+    
+    // ul 태그의 자식 태그로 위에서 생성한 li element를 넣는다.
+    const todoList = document.querySelector('ul')
+    todoList.appendChild(todoThing)
+
+    // 삭제 버튼을 생성 후 li 태그의 자식 태그로 넣는다.
+    const deleteButton = document.createElement('button')
+    deleteButton.textContent = 'X'
+    todoThing.appendChild(deleteButton)
+
+
+    // 삭제 버튼을 클릭하면 해당 li element를 삭제한다
+    deleteButton.addEventListener('click', function(event){
+      // button tag에서 이벤트가 발생했을 때,
+      if (event.target.tagName === 'BUTTON'){
+        // 그 버튼 태그가 속해있는 li 태크를 ul 태그로부터 삭제
+        // 각 요소는 부모에 대한 정보도 있음  
+        event.target.parentNode.remove()
+      }
+    });
+
+    // li element를 클릭하면 취소선이 토글된다.
+    todoThing.addEventListener('click', function(event){
+      if (event.target.tagName === 'LI'){
+        todoThing.classList.toggle('done')
+      }
+    })
+
+  }
+
+  form.addEventListener('submit', addTodo)
+</script>
+</body>
+</html>

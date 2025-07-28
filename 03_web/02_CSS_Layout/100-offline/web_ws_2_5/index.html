@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .book-container {
+      box-sizing: border-box;
+      background-color: #fff;
+      width: 300px;
+      padding: 20px;
+      margin: 10px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .book-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .book-author {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .book-description {
+      font-size: 14px;
+      color: #888;
+    }
+
+    .section-title {
+      position: sticky;
+      top: 0px;
+      background-color: #fff;
+      padding: 30px;
+      margin-bottom: 10px;
+      font-size: 20px;
+      font-weight: bold;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .top-button {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      background-color: #333;
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    .top-button a {
+      text-decoration: none;
+      font-size: 16px;
+      color: #fff;
+    }
+
+    .book-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body style="height: 3000px;">
+  <h1>도서 관리 서비스에 오신 것을 환영합니다</h1>
+
+  <div class="section-title">베스트 셀러 목록</div>
+  <div class="book-list">
+    <div class="book-container">
+      <h2 class="book-title">도서 제목 1</h2>
+      <p class="book-author">저자 1</p>
+      <p class="book-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at lacus vel neque ullamcorper tempus.</p>
+    </div>
+
+    <div class="book-container">
+      <h2 class="book-title">도서 제목 2</h2>
+      <p class="book-author">저자 2</p>
+      <p class="book-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+    </div>
+  </div>
+
+  <div class="section-title">신간 도서 목록</div>
+  <div class="book-list">
+    <div class="book-container">
+      <h2 class="book-title">도서 제목 3</h2>
+      <p class="book-author">저자 3</p>
+      <p class="book-description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+  </div>
+
+  <div class="top-button">
+    <a href="#">TOP</a>
+  </div>
+</body>
+</html>

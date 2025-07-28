@@ -1,0 +1,55 @@
+<!-- element-manipulation.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .red {
+      color: crimson;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 class="heading">DOM 조작</h1>
+  <a href="https://www.google.com/">google</a>
+  <p class="content">content1</p>
+  <p class="content">content2</p>
+  <p class="content">content3</p>
+  <ul>
+    <li>list1</li>
+    <li>list2</li>
+  </ul>
+
+  <script>
+    // 속성 요소 조작
+    // 클래스 속성 조작
+    const h1Tag = document.querySelector('.heading')
+    console.log(h1Tag.classList)
+
+    h1Tag.classList.add('red')
+    console.log(h1Tag.classList)
+
+    h1Tag.classList.remove('red')
+    console.log(h1Tag.classList)
+
+    // h1Tag.classList.toggle('red')
+    // console.log(h1Tag.classList)
+
+    // 일반 속성 조작
+    const aTag = document.querySelector('a')
+    console.log(aTag.getAttribute('href'))
+
+    aTag.setAttribute('href', 'https://www.naver.com/')
+    console.log(aTag.getAttribute('href'))
+
+    aTag.removeAttribute('href')
+    console.log(aTag.getAttribute('href'))
+  </script>
+</body>
+
+</html>

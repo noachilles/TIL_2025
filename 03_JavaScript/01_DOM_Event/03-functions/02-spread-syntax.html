@@ -1,0 +1,34 @@
+<!-- spread-syntax.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 1. 인자 확장 (함수 호출 시)
+    function myFunc(x, y, z) {
+      return x + y + z
+    }
+
+    let numbers = [1, 2, 3]
+
+    console.log(myFunc(...numbers)) // 6
+
+
+    // 2. 나머지 매개변수 (함수 선언 시)
+    function myFunc2(x, y, ...restArgs) {
+      return [x, y, restArgs]
+    }
+
+    console.log(myFunc2(1, 2, 3, 4, 5)) // [1, 2, [3, 4, 5]]
+    console.log(myFunc2(1, 2)) // [1, 2, []]
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // "전위 연산자"
+    // 피연산자에 1을 더한 값을 반환
+    // a에 4를 할당한 후 4를 반환
+    let a = 3
+    const b = ++a
+    console.log(a, b) // 4 4
+
+    // // "후위 연산자"
+    // 피연산자에 1을 더하기 전의 값을 반환
+    // 3을 먼저 반환한 후 x에 4를 할당
+    let x = 3
+    const y = x++
+    console.log(x, y) // 4 3
+  </script>
+</body>
+
+</html>

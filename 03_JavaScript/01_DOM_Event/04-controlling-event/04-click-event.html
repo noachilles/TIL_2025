@@ -1,0 +1,40 @@
+<!-- click-event.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="btn">버튼</button>
+  <p>클릭횟수 : <span id="counter">0</span></p>
+
+  <script>
+    // 1. 초기값 할당
+    let counterNumber = 0
+
+    // 2. 버튼 요소 선택
+    const btn = document.querySelector('#btn')
+
+    // 3. 콜백 함수 (버튼에 클릭 이벤트가 발생할때마다 실행할 코드)
+    const clickHandler = function () {
+      // 3.1 초기값 += 1
+      counterNumber += 1
+
+      // 3.2 p 요소를 선택
+      const spanTag = document.querySelector('#counter')
+
+      // 3.3 p 요소의 컨텐츠를 1 증가한 초기값으로 설정
+      spanTag.textContent = counterNumber
+    }
+
+    // 4. 버튼에 이벤트 핸들러 부착 (클릭 이벤트)
+    btn.addEventListener('click', clickHandler)
+  </script>
+</body>
+
+</html>
