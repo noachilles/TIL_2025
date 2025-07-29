@@ -1,0 +1,45 @@
+<!-- cat-api-ad.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button>냥냥펀치</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    const URL = 'https://api.thecatapi.com/v1/images/search'
+    const btn = document.querySelector('button')
+
+    const getCats = function () {
+      axios({
+        method: 'get',
+        url: URL
+      })
+        .then((response) => {
+          const imgUrl = response.data[0].url
+          return imgUrl
+        })
+        .then((imgData) => {
+          const imgElem = document.createElement('img')
+          imgElem.setAttribute('src', imgData)
+          document.body.appendChild(imgElem)
+        })
+        .catch((error) => {
+          console.log(error)
+          console.log('실패했다옹')
+        })
+      console.log('야옹야옹')
+    }
+
+    btn.addEventListener('click', getCats)
+  </script>
+</body>
+
+</html>

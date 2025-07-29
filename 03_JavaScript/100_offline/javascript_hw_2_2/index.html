@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /*
+      인자의 길이에 따라 true 혹은 false를 반환하는 함수 `isValid`를 작성하시오.
+      - `password` 인자의 값의 길이가 8 미만이면 false를 반환한다.
+      - `password` 인자의 값의 길이가 8 이상이면 true를 반환한다.
+			- 함수 선언식으로 작성한다.
+    */
+    // 한 줄 가능
+    function isValid(password){
+      if (password.length < 8) return false
+      else return true
+    }
+
+    console.log(isValid('password')) // true
+    console.log(isValid('pwd')) // false
+    /*
+      문자열로 구성된 배열을 특정 문자를 기준으로 하나의 문자열로 합치는 함수 `myJoin`을 작성하시오.
+      - 첫번째 인자 `array`는 문자열로 구성된 배열이다.
+      - 두번째 인자 `separator`는 문자열이다.
+			- 함수 선언식으로 작성한다.
+    */
+
+    function myJoin(array, separator){
+      let res = array[0]
+      for (let i = 1; i < array.length; i++){
+        res += (separator + array[i])
+      }
+      return res
+    }
+
+    console.log(myJoin(['010', '1234', '5678'], '-')) // '010-1234-5678'
+
+    /*
+      주문을 받아서 주문서를 반환하는 함수 `makeOrder`를 작성하시오.
+      - 첫번째 인자 `menu`는 문자열이다.
+      - 두번째 인자 `size`는 문자열이며, 기본인자는 'regular'이다.
+      - 함수는 각 인자를 속성으로 갖는 객체를 반환이다.
+    */
+    
+    function makeOrder(menu, size='regular') {
+      new_obj = {menu, size}
+      return new_obj
+    }
+
+    console.log(makeOrder('mocha')) // { menu: 'mocha', size: 'regular' }
+
+    /*
+      - 아래 celsiusToFahrenheit 함수는 섭씨 온도를 화씨 온도로 바꾸는 함수이다.
+      - 선언식으로 작성된 함수를 "화살표 함수"로 다시 작성하시오.
+    */
+    function celsiusToFahrenheit (celsius) {
+      return celsius * 9/5 + 32
+    }
+
+    const celsiusToFahrenheit = (celsius) => celsius * 9/5 + 32
+
+  </script>
+</body>
+</html>

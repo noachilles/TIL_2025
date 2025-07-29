@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 1. 단축 속성
+    const name = 'Alice'
+    const age = 30
+
+    const user = {
+      name: name,
+      age: age
+    }
+
+    // 2. 단축 메서드
+    const myObj1 = {
+      myFunc: function () {
+        return 'Hello'
+      }
+    }
+
+    const myObj2 = {
+      myFunc() {
+        return 'Hello'
+      }
+    }
+
+    // 3. 계산된 속성
+    const product = prompt('물건 이름을 입력해주세요')
+    const prefix = 'my'
+    const suffix = 'property'
+
+    const bag = {
+      [product]: 5,
+      [prefix + suffix]: 'value'
+    }
+
+    console.log(bag) // {연필: 5, myproperty: 'value'}
+
+
+    // 4. 구조 분해 할당
+    const userInfo = {
+      firstName: 'Alice',
+      userId: 'alice123',
+      email: 'alice123@gmail.com'
+    }
+
+    // const firstName = userInfo.name
+    // const userId = userInfo.userId
+    // const email = userInfo.email
+
+    // const { firstName } = userInfo
+    // const { firstName, userId } = userInfo
+    const { firstName, userId, email } = userInfo
+
+    // Alice alice123 alice123@gmail.com
+    console.log(firstName, userId, email)
+
+    // 구조 분해 할당 활용 - 함수 매개변수
+    const person = {
+      name: 'Bob',
+      age: 35,
+      city: 'London',
+    }
+
+    function printInfo({ name, age, city }) {
+      console.log(`이름: ${name}, 나이: ${age}, 도시: ${city}`)
+    }
+
+    // 함수 호출 시 객체를 구조 분해하여 함수의 매개변수로 전달
+    printInfo(person) // '이름: Bob, 나이: 35, 도시: London'
+
+    // 5. 전개 구문
+    const obj = { b: 2, c: 3, d: 4 }
+    const newObj = { a: 1, ...obj, e: 5 }
+    console.log(newObj) // {a: 1, b: 2, c: 3, d: 4, e: 5}
+
+    // 6. 유용한 객체 메서드
+    const profile = {
+      name: 'Alice',
+      age: 30
+    }
+
+    console.log(Object.keys(profile)) // ['name', 'age']
+    console.log(Object.values(profile)) // ['Alice', 30]
+
+  </script>
+</body>
+
+</html>

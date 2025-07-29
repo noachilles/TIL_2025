@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const xhr = new XMLHttpRequest() // XHR 객체 인스턴스 생성
+    xhr.open('GET', 'https://jsonplaceholder.typicode.com/posts')
+    xhr.send() // 요청 전송
+
+    xhr.onload = function () {  // 요청이 완료되었을 때 호출
+      // 응답 상태 코드가 200이라면
+      if (xhr.status == 200) {
+        console.log(xhr.responseText)  // 응답 받은 결과 출력
+      } else {
+        console.error('Request failed')  // 200 이외 상태에 대한 예외 처리
+      }
+    }
+  </script>
+</body>
+</html>

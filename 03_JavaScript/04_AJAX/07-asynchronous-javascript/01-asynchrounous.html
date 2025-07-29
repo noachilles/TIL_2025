@@ -1,0 +1,36 @@
+<!-- asynchrounous.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const slowRequest = function (callBack) {
+      console.log('1. 오래 걸리는 작업 시작 ...')
+      setTimeout(function () {
+        callBack()
+      }, 3000)
+    }
+
+    const myCallBack = function () {
+      console.log('2. 콜백함수 실행됨')
+    }
+
+    slowRequest(myCallBack)
+
+    console.log('3. 다른 작업 실행')
+
+    // 출력결과
+    // 1. 오래 걸리는 작업 시작 ...
+    // 3. 다른 작업 실행
+    // 2. 콜백함수 실행됨
+  </script>
+</body>
+
+</html>

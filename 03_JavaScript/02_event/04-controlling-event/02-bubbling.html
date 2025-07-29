@@ -1,0 +1,48 @@
+<!-- bubbling.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body * {
+      margin: 10px;
+      border: 1px solid black;
+    }
+  </style>
+</head>
+
+<body>
+  <form id="form">
+    form
+    <div id="div">
+      div
+      <p id="p">p</p>
+    </div>
+  </form>
+
+  <script>
+    const formElement = document.querySelector('#form')
+    const divElement = document.querySelector('#div')
+    const pElement = document.querySelector('#p')
+
+    const clickHandler1 = function (event) {
+      console.log('form이 클릭되었습니다.')
+    }
+    const clickHandler2 = function (event) {
+      console.log('div가 클릭되었습니다.')
+    }
+    const clickHandler3 = function (event) {
+      console.log('p가 클릭되었습니다.')
+    }
+
+    formElement.addEventListener('click', clickHandler1)
+    divElement.addEventListener('click', clickHandler2)
+    pElement.addEventListener('click', clickHandler3)
+  </script>
+</body>
+
+</html>

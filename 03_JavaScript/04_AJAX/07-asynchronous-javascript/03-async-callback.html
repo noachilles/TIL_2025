@@ -1,0 +1,27 @@
+<!-- async-callback.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const asyncTask = function (callback) {
+      setTimeout(function () {
+        console.log('비동기 작업 완료')
+        callback() // 작업 완료 후 콜백 호출
+      }, 2000) // 1초 후에 작업 완료
+    }
+    // 비동기 작업 수행 후 콜백 실행
+    asyncTask(function () {
+      console.log('작업 완료 후 콜백 실행')
+    })
+  </script>
+</body>
+
+</html>

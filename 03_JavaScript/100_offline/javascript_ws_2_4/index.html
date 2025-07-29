@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /*
+      name과 hobbies 키를 가진 객체 person을 생성하시오.
+      name에는 이름을 표기할 수 있는 문자열 값이,
+      hobbies에는 취미를 표기할 수 있는 배열이 할당되어야 한다.
+      메서드 showHobbies를 호출하면, name과 hobbies의 값을 console창에 출력한다.
+      ex)
+      홍길동 (3) ['밥먹기', '공부하기', '숨쉬기']
+    */
+    const person = {name: '홍길동', hobbies: ['밥먹기', '공부하기', '숨쉬기'],
+      showHobbies: function() {
+        console.log(this.name, this.hobbies)
+      }
+    }
+    
+    /*
+      위에서 작성한 showHobbies를 아래의 요구 사항을 만족하도록 수정하시오.
+        1. showHobbies 메서드 호출시, 아래와 같은 양식의 문구가 출력 되어야 한다.
+          - {name}의 취미 목록 :
+        2. Array Helper Method를 활용하여 hobbies 배열을 순회하고, 각 취미들을 아래와 같은 양식의 문구로 출력한다.
+          - {name}은 {hobby}를 좋아한다.
+      ex)
+        홍길동의 취미 목록 : 
+        홍길동은 밥먹기를 좋아한다.
+        홍길동은 공부하기를 좋아한다.
+        홍길동은 숨쉬기를 좋아한다.
+    */
+   
+    person.showHobbies = function(){
+      console.log(`${this.name}의 취미 목록 :`)
+      this.hobbies.forEach(hobby => {
+        console.log(`${this.name}은 ${hobby}를 좋아한다.`)
+      });
+    }
+
+    person.showHobbies()
+    
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta nameset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 배열 순회 종합
+    const names = ['Alice', 'Bella', 'Cathy']
+
+    // for loop
+    for (let idx = 0; idx < names.length; idx++) {
+      console.log(names[idx])
+    }
+
+    // for...of
+    for (const name of names) {
+      console.log(name)
+    }
+
+    // forEach
+    names.forEach((name) => {
+      console.log(name)
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const jsObject = {
+      coffee: 'Americano',
+      iceCream: 'Cookie and cream'
+    }
+
+    // Object -> JSON
+    const objToJson = JSON.stringify(jsObject)
+    console.log(objToJson)  // {"coffee":"Americano","iceCream":"Cookie and cream"}
+    console.log(typeof objToJson)  // string
+
+    // JSON -> Object
+    const jsonToObj = JSON.parse(objToJson)
+    console.log(jsonToObj)  // { coffee: 'Americano', iceCream: 'Cookie and cream' }
+    console.log(typeof jsonToObj)  // object
+
+  </script>
+</body>
+
+</html>

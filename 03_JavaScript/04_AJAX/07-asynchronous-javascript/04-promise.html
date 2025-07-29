@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // promise.html
+    const fetchData = () => {
+      return new Promise((resolve, reject) => {
+          const xhr = new XMLHttpRequest()
+          xhr.open('GET', 'https://api.thecatapi.com/v1/images/search')
+          xhr.send()
+      })
+    }
+    const promiseObj = fetchData()
+    console.log(promiseObj) // Promise object
+
+  </script>
+</body>
+</html>

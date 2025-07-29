@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /*
+      주어진 배열 homeworks를 순회하여 null이 아닌 값들만 새로운 배열 new_homeworks에 삽입하시오.
+      [ 'david.zip', 'maria.zip', 'tom.zip' ]
+    */
+
+    const homeworks = ['david.zip', null, 'maria.zip', 'tom.zip', null]
+    const new_homeworks = []
+
+    homeworks.forEach(element => {
+      if(element != null) new_homeworks.push(element)
+    });
+    console.log(new_homeworks)
+
+    /*
+      주어진 배열들을 사용하여 아래 문자열을 완성하시오.
+      'www.samsung.com/sec/buds/galaxy-buds-pro'
+      1. arr1의 요소들을 각각 .을 구분점으로 하여 하나의 문자열로 만든다.
+      2. 완성된 문자열을 arr3의 맨 앞에 삽입한다.
+      3. arr2의 요소들을 각각 -을 구분점으로 하여 하나의 문자열로 만든다.
+      4. 완성된 문자열을 arr3의 맨 뒤에 삽입 한다.
+      5. arr3의 요소들을 각각 /을 구분점으로 하여 하나의 문자열로 만든다.
+      6. 완성된 문자열을 출력한다.
+    */
+    const arr1 = ['www', 'samsung', 'com']
+    const arr2 = ['galaxy', 'buds', 'pro']
+    const arr3 = ['sec', 'buds']
+
+    arr3.unshift(arr1.join('.'))
+    arr3.push(arr2.join('-'))
+    const res = arr3.join('/')
+    console.log(res)
+
+    /*
+    속력값(distance/time)을 저장하는 배열 speeds를 만드시오.
+    array helper method map을 활용하여 작성한다.
+    */
+
+    const trips = [
+      { distance: 34, time: 10 },
+      { distance: 90, time: 50 },
+      { distance: 59, time: 25 }
+    ]
+
+    const speeds = trips.map((distance, time) => distance / time)
+
+    /*
+    주어진 배열의 요소 중 특정 문자(query)가 포함되는 요소만 모아서 새로운 배열을 반환하시오.
+    array helper method filter를 활용하여 작성한다.
+    */
+
+    const languages = ['python', 'javascript', 'html', 'java']
+    const query = 'java'
+
+    /*
+    주어진 accounts 배열에서 balance가 24,000인 사람을 찾으시오.
+    array helper method find를 활용하여 작성한다.
+    */
+
+    const accounts = [
+      { name: 'sophia', balance: 1200 },
+      { name: 'john', balance: 50000 },
+      { name: 'tailer', balance: 24000 }
+    ]
+  </script>
+</body>
+</html>

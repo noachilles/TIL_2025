@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const names = ['Alice', 'Bella', 'Cathy']
+
+    // 일반 함수 표기
+    names.forEach(function (name) {
+      console.log(name)
+    })
+
+    // 화살표 함수 표기
+    names.forEach((name) => {
+      console.log(name)
+    })
+
+    names.forEach(function (name, index, array) {
+      console.log(`${name} / ${index} / ${array}`)
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const user = {
+      name: 'Alice',
+      'key with space': true,
+      greeting: function () {
+        return 'hello'
+      }
+    }
+
+    // 조회
+    console.log(user.name) // Alice
+    console.log(user['key with space']) // true
+
+    // 추가
+    user.address = 'korea'
+    console.log(user) // {name: 'Alice', key with space: true, address: 'korea', greeting: ƒ}
+
+    // 수정
+    user.name = 'Bella'
+    console.log(user.name) // Bella
+
+    // 삭제
+    delete user.name
+    console.log(user) // {key with space: true, address: 'korea', greeting: ƒ}
+
+    // in 연산자
+    console.log('greeting' in user) // true
+    console.log('country' in user) // false
+
+    // 메서드 호출
+    console.log(user.greeting()) // hello
+  </script>
+</body>
+
+</html>

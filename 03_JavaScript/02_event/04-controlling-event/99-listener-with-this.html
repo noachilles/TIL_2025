@@ -1,0 +1,30 @@
+<!-- listener-with-this.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="function">function</button>
+  <button id="arrow">arrow function</button>
+
+  <script>
+    const functionButton = document.querySelector('#function')
+    const arrowButton = document.querySelector('#arrow')
+
+    functionButton.addEventListener('click', function () {
+      console.log(this) // <button id="function">function</button>
+    })
+
+    arrowButton.addEventListener('click', () => {
+      console.log(this) // window
+    })
+  </script>
+</body>
+
+</html>

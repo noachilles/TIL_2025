@@ -1,0 +1,56 @@
+<!-- click-input-event.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .blue {
+      color: blue;
+    }
+  </style>
+</head>
+
+<body>
+  <h1></h1>
+  <button id="btn">클릭</button>
+  <input type="text" id="text-input">
+
+  <script>
+    // input 구현
+    const inputTag = document.querySelector('#text-input')
+    const h1Tag = document.querySelector('h1')
+
+    const inputHandler = function (event) {
+      h1Tag.textContent = event.currentTarget.value
+    }
+
+    inputTag.addEventListener('input', inputHandler)
+
+
+    // click 구현
+    const btn = document.querySelector('#btn')
+
+    const clickHandler = function () {
+      // 1. add 방법
+      h1Tag.classList.add('blue')
+
+      // 2. toggle 방법
+      // h1Tag.classList.toggle('blue')
+
+      // 3. if 방법
+      // if (h1Tag.classList.value) {
+      //   h1Tag.classList.remove('blue')
+      // } else {
+      //   h1Tag.classList.add('blue')
+      // }
+    }
+
+    btn.addEventListener('click', clickHandler)
+  </script>
+</body>
+
+</html>
