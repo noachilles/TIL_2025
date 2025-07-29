@@ -122,6 +122,25 @@ C가 A, B를 순서대로 다중 상속 받은 경우 `super()` 는 A를 가리�
 
 ## 데코레이터(Decorator)  
 : 다른 함수의 코드를 유지한 채로 수정하거나 확장하기 위해 사용되는 함수  
+```python
+def my_decorator(func):
+  def wrapper():
+    # 함수 실행 전에 수행할 작업  
+    print('함수 실행 전')
+    # 원본 함수 호출
+    result = func()
+    # 함수 실행 후에 수행할 작업
+    print('함수 실행 후')
+    return result
+  return wrapper
+```
+
+```python
+@my_decorator
+def my_function():
+  print('원본 함수 실행')
+```
+`wrapper()`를 유지하며 `my_function()`기능을 추가
 
 ## 제너레이터  
 제너레이터는 `iter()`를 간단하게 만드는 역할을 담당함  

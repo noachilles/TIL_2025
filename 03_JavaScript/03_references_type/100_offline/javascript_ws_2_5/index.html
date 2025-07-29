@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /*
+      주어진 createPerson 함수는 객체를 하나 반환하는 함수이다.
+      각 요구사항을 만족하는 객체를 반환 할 수 있도록 코드를 작성하시오.
+        1. 넘겨받은 인자 중 name과 age는, 동일한 이름의 key 값에 value가 할당되어야 한다.
+          - 단, 단축 구문을 사용하여 작성한다.
+        2. greeting 메서드는 호출시, 자신의 name과 age를 console창에 출력한다.
+          - 단, 단축 구문을 사용하여 작성한다.
+        3. 넘겨받은 인자 city의 값을 활용하여 키값이 `livesIn{city}` 되도록 작성한다.
+            - 계산된 속성 방식을 사용하여 작성한다.
+            - 인자 city에 값이 있는 경우 true를, 없는 경우 false를 할당한다.
+            - 삼항 연산자를 활용한다. `condition ? true : false`
+    */
+    function createPerson(name, age, city) {
+      return {
+        name,
+        age,
+        greeting(){
+          console.log(`${name}의 나이는 ${age}입니다.`)
+        },
+        ['liveIn' + city]: city ? true : false
+      }
+    }
+
+    const person1 = createPerson('홍길동', 30, '옥천')
+    console.log(person1) // {name: '홍길동', age: 30, livesIn옥천: true, greeting: ƒ}
+    person1.greeting() // 홍길동의 나이는 30입니다.
+  </script>
+</body>
+</html>
