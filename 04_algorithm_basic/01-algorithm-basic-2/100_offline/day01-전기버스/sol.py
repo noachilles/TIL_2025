@@ -39,18 +39,30 @@
 #     print(res)
 #
 
-
+# 시간초과 발생
 def goby_bus(road, now, count, battery):
+    global res
+
     # 만약 배터리가 없다면 돌아감
-    if not battery:
+    if battery < 0 or res <= M:
         return
 
-    for idx in range(now, N+1):
-        if road[idx] == 0:
-            goby_bus(road, now+1, count, battery-1)
-        else:
-            goby_bus(road, now+1, count+1, K)
-            goby_bus(road, now+1, count, battery)
+    # 배터리가 모두 닳지 않았으며 현재 위치가 종점이라면
+    if now == N:
+        if res > count:
+            res = count
+        return
+
+    # 만약 현재 위치에 충전소가 없다면
+    if road[now] == 0:
+        # 앞으로 전진만 할 수 있음
+        goby_bus(road, now+1, count, battery-1)
+    # 만약 현재 위치에 충전소가 있다면
+    else:
+        # 앞으로 전진
+        goby_bus(road, now+1, count, battery-1)
+        # 충전 후 전진
+        goby_bus(road, now+1, count+1, K-1)
 
 T = int(input())
 
@@ -61,4 +73,11 @@ for tc in range(1, T+1):
     # chargers의 경로를 road에 저장함
     for idx in chargers:
         road[idx] = 1
-
+    res = M + 1
+    goby_bus(road, 0, 0, K)
+    
+    print(f'#{tc}', end=' ')
+    if res > M:
+        print(0)
+    else:
+        print(res)
