@@ -80,37 +80,42 @@
 #     else:
 #         print(res)
 
-def goby_bus():
-    # 가장 가까운 충전소 저장
-    nearest = 0
-    # 충전 횟수
-    cnt = 0
-    # 현재 위치
-    now = 0
-    battery = K
-    # 길의 모든 칸을 돌면서 한 칸씩 전진한다.
+import sys
+sys.stdin = open('input.txt')
+
+def goby_bus(road):
+    nearest = 0 # 가장 가까운 충전소
+    cnt = 0 # 충전 횟수
+    now = 0 # 현재 위치
+    battery = K # 배터리
+    # 길의 모든 칸을 돌면서 한 칸씩 전진
     # 현재 위치가 N이 되면 종료  
-    while now != N:
-        now += 1
-        battery -= 1
-        print(now, battery)
+    while now <= N:
         if road[now] == 1:
             nearest = now
-        # 만약 배터리가 없다면
-        if battery < 0:
+        # 배터리를 모두 사용했으며, 종점에 도착하지 못한 경우
+        if battery <= 0 and now != N:
+            # 만약 이미 방문한 적이 있는 충전소라면 - 종점에 도착할 수 없음
             if road[nearest] == 2:
-                return False
-            else:
-                now = nearest
-                battery = K
-                cnt += 1
-                road[nearest] = 2
+                return 0
+            # 그런 경우가 아니라면, 현재 위치를 가장 가까운 충전소로 변경한 후 battery 충전
+            now = nearest
+            road[nearest] = 2
+            cnt += 1
+            battery = K
+        # 전진: now 1증가 & battery 1소모
+        now += 1
+        battery -= 1
+
     return cnt
             
 
 T = int(input())
 for tc in range(1, T+1):
     K, N, M = map(int, input().split())
-    
+    chargers = list(map(int, input().split()))
     road = [0] * (N+1)
-    
+    for idx in chargers:
+        road[idx] = 1
+    print(f'#{tc}', end=' ')
+    print(goby_bus(road))
