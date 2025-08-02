@@ -40,25 +40,77 @@
 #
 
 
-def goby_bus(road, now, count, battery):
-    # 만약 배터리가 없다면 돌아감
-    if not battery:
-        return
+# def goby_bus(road, now, count, battery):
+#     global res
+#     # 만약 현재 위치가 종점이라면
+#     if now == N:
+#         if res > count:
+#             res = count
+#         return
+#     # 만약 배터리가 없다면 돌아간다.
+#     if battery < 0:
+#         return
 
-    for idx in range(now, N+1):
-        if road[idx] == 0:
-            goby_bus(road, now+1, count, battery-1)
-        else:
-            goby_bus(road, now+1, count+1, K)
-            goby_bus(road, now+1, count, battery)
+#     # 해당 위치에 충전소가 없다면
+#     if road[now] == 0:
+#         # battery는 1 줄고, 현재 위치는 한 칸 전진
+#         goby_bus(road, now+1, count, battery-1)
+#     # 아닐 경우
+#     else:
+#         # battery를 충전했을 때: K-1을 배터리 값으로 설정하고 한 칸 전진
+#         goby_bus(road, now+1, count+1, K-1)
+#         # 배터리를 충전하지 않았을 때: 현재 배터리애서 1 빼고 한 칸 전진
+#         goby_bus(road, now+1, count, battery-1)
+
+# T = int(input())
+
+# for tc in range(1, T+1):
+#     K, N, M = map(int, input().split())
+#     road = [0] * (N+1)
+#     chargers = list(map(int, input().split()))
+#     # chargers의 경로를 road에 저장함
+#     for idx in chargers:
+#         road[idx] = 1
+
+#     res = M+1
+#     goby_bus(road, 0, 0, K)
+#     print(f'#{tc}', end=' ')
+#     if res > M:
+#         print(0)
+#     else:
+#         print(res)
+
+def goby_bus():
+    # 가장 가까운 충전소 저장
+    nearest = 0
+    # 충전 횟수
+    cnt = 0
+    # 현재 위치
+    now = 0
+    battery = K
+    # 길의 모든 칸을 돌면서 한 칸씩 전진한다.
+    # 현재 위치가 N이 되면 종료  
+    while now != N:
+        now += 1
+        battery -= 1
+        print(now, battery)
+        if road[now] == 1:
+            nearest = now
+        # 만약 배터리가 없다면
+        if battery < 0:
+            if road[nearest] == 2:
+                return False
+            else:
+                now = nearest
+                battery = K
+                cnt += 1
+                road[nearest] = 2
+    return cnt
+            
 
 T = int(input())
-
 for tc in range(1, T+1):
     K, N, M = map(int, input().split())
+    
     road = [0] * (N+1)
-    chargers = list(map(int, input().split()))
-    # chargers의 경로를 road에 저장함
-    for idx in chargers:
-        road[idx] = 1
-
+    
