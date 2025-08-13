@@ -25,8 +25,14 @@
 `$ pip install -r requirements.txt`  
 를 통해서 동일한 버전의 패키지들을 사용할 수 있음  
 
-### Django PJT 생성
-`$ django-admin startproject firstpjt .`  
+### Django PJT 및 app 생성
+```bash
+$ django-admin startproject practice .
+```
+
+```bash
+$ python manage.py startapp articles
+```
 
 ## Django Design Pattern  
 ### 디자인 패턴  

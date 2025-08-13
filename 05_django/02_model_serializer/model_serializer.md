@@ -109,11 +109,3 @@ def model_to_dict(article):
 put과 fetch는 다르다  
 
 is_valid() 결과로 유효성 검사를 통과하지 못했을 경우 `raise_exception` 옵션을 is_valid()내부에 활용할 수 있음  
-
-```bash
-$ django-admin startproject practice .
-```
-
-```bash
-$ python manage.py startapp articles
-```
