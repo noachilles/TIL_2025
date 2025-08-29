@@ -15,8 +15,8 @@ def knapsack_optimized(weights, values, capacity):
 
 
 # 예시
-weights = [50, 10, 30]
-values = [120, 100, 120]
+weights = [10, 20, 30]
+values = [120, 100, 80]
 capacity = 50
 
 max_value = knapsack_optimized(weights, values, capacity)
