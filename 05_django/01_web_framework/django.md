@@ -122,6 +122,43 @@ path('article/<int:variable_name>/', views.detail),
 path('article/<int:article_pk>/', views.detail),
 ```
 
+`Query Parameter`를 쓰는 방법은 따로 배우지 않았지만, 실습 내용에 있어서 별도로 추가  
+Query Parameter는 GET의 인자로 받은 값을 의미함  
+`&`를 통해서 구분하고, 아래 예시와 같은 방법으로 사용할 수 있음  
+`http://127.0.0.1:8000/books/?page=1`
+![alt text](image-1.png)  
+parameter를 설정하기 위해서는 기본 url에 variable routing을 사용하는 것이 아니라,  
+입력 받은 `GET`에서 값을 가져오는 것이 중요해 아래와 같은 방식으로 사용함  
+
+```python
+@api_view(['GET'])
+def books_list(request):
+    '''
+    - 쿼리 파라미터 'page'를 통해 페이지 번호를 받는다.
+    - 단, page 파라미터가 없을 경우에도 첫번째 페이지로 간주하여 결과값을 반환한다.
+    - 요청 받은 페이지 수가 전체 도서 정보 수를 넘어서면, 별도 예외 처리 없이 빈 리스트가 반환되어도 무관하다.
+    '''    
+    page_str = request.GET.get('page', '1')
+    page = int(page_str)
+    page_size = 5
+    start = (page - 1) * page_size
+    end = start + page_size
+    
+```
+그리고 이 때 `get`은 `default`값을 설정할 수 있음  
+추가) 또한 아래와 같이 배열을 `JsonResoponse`로 반환하기 위해서는 아래처럼 `safe=False` 옵션을 넣어줘야 함  
+
+```python
+# 만약 전체 도서 정보 수를 넘어서면
+if start >= len(books):
+    res = []
+else:
+    res = books[start:end]
+
+return JsonResponse(res, safe=False)
+```
+
+
 ### App URL mapping  
 : 각 앱에 URL을 정의하는 것 => 프로젝트와 각 앱이 URL을 나누어 관리를 편하게 하기 위함  
 
