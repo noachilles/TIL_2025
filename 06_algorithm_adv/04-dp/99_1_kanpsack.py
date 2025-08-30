@@ -12,14 +12,14 @@ def knapsack(weights, values, capacity):
                 # 현재 물건을 담는 경우와 담지 않는 경우 중 최대 가치를 선택
                 K[i][w] = max(values[i - 1] + K[i - 1][w - weights[i - 1]], K[i - 1][w])
             # 용량이 w일 때 담을 수 있는 최대 가치 비교: 현재 물건을 담기 전 최댓값 + 현재 물건의 value & 이전 물건까지의 가치 (행 기준)
-            # 현재 물건 담기 전 최댓값도 이전 행에서 불러온다: 물건을 중복해서 담을 가능성이 있기 때문에
+            # 현재 물건 담기 전 최댓값도 이전 행에서 불러온다: 물건을 중복해서 담을 수 있게 되므로
             print(f'when capacity is {w} and item is {i}: {K[i]}\n 현재 물건 담기 전: {K[i-1][w-weights[i-1]]}, 이전 물건까지의 가치: {K[i-1][w]}')
 
     return K[n][capacity]  # 최대 담을 수 있는 가치 반환
 
 
-weights = [50, 10, 30]
-values = [120, 100, 120]
+weights = [10, 20, 30]
+values = [120, 100, 80]
 capacity = 50  # 배낭의 용량
 
 max_value = knapsack(weights, values, capacity)
